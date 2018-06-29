@@ -20,7 +20,11 @@ namespace progettoDatabes
             
             InitializeComponent();
         }
-        public void queryReaderComboBox(string query,ComboBox combo,List<String> listColumn, Action ex)
+        public void queryReaderDataGridView(string query,DataGridView data, List<String> listColumn)
+        {
+
+        }
+        public void queryReaderComboBox(string query,ComboBox combo,List<String> listColumn)
         {
             string delirio="";
             bool doTrimEnd = false;
@@ -37,10 +41,7 @@ namespace progettoDatabes
                     {
                         foreach (String x in listColumn) {
                             delirio = delirio + reader.GetString(x);
-                            /*
-                            Action <string> ex = (string y) => { textBox1.Text = y; };
-                            ex.Invoke(delirio);
-                            */                            if (doTrimEnd)
+                            if (doTrimEnd)
                                 delirio = delirio + " - ";
                         }
                      
@@ -51,8 +52,6 @@ namespace progettoDatabes
                         delirio = "";
 
                     }
-                    
-                    // Do whatever else you need to.
                 }
             }
             catch (Exception ex2)
@@ -107,7 +106,8 @@ namespace progettoDatabes
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            
+            queryReaderComboBox(query, comboboxClienteNominativo, new List<string>(new string[] { "nominativo", "codiceFiscale" }));
+            queryReaderComboBox(query, comboboxClienteNominativo, new List<string>(new string[] { "nominativo"}));
         }
     }
 }

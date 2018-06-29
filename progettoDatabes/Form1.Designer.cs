@@ -328,7 +328,7 @@
             this.dateTimePickerFineFase.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dateTimePickerFineFase.CustomFormat = "HH:mm";
             this.dateTimePickerFineFase.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerFineFase.Location = new System.Drawing.Point(284, 62);
+            this.dateTimePickerFineFase.Location = new System.Drawing.Point(270, 57);
             this.dateTimePickerFineFase.Name = "dateTimePickerFineFase";
             this.dateTimePickerFineFase.ShowUpDown = true;
             this.dateTimePickerFineFase.Size = new System.Drawing.Size(62, 25);
@@ -349,7 +349,7 @@
             // lblOraFine
             // 
             this.lblOraFine.AutoSize = true;
-            this.lblOraFine.Location = new System.Drawing.Point(243, 62);
+            this.lblOraFine.Location = new System.Drawing.Point(230, 61);
             this.lblOraFine.Name = "lblOraFine";
             this.lblOraFine.Size = new System.Drawing.Size(34, 20);
             this.lblOraFine.TabIndex = 3;
