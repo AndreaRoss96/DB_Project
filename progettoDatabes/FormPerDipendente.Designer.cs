@@ -75,6 +75,7 @@
             // 
             // comboboxCliente
             // 
+            this.comboboxCliente.Enabled = false;
             this.comboboxCliente.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboboxCliente.FormattingEnabled = true;
             this.comboboxCliente.Location = new System.Drawing.Point(6, 56);
@@ -98,15 +99,25 @@
             // 
             // comboboxOperazioni
             // 
+            this.comboboxOperazioni.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboboxOperazioni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboboxOperazioni.FormattingEnabled = true;
+            this.comboboxOperazioni.Items.AddRange(new object[] {
+            "1 - elenco di prestazioni e fasi per ogni cliente (op 2)",
+            "2 - resosconto di una prestazione (op3)",
+            "3 - elenco di prestazioni per un cliente (op 20)"});
             this.comboboxOperazioni.Location = new System.Drawing.Point(19, 246);
             this.comboboxOperazioni.Name = "comboboxOperazioni";
-            this.comboboxOperazioni.Size = new System.Drawing.Size(394, 21);
+            this.comboboxOperazioni.Size = new System.Drawing.Size(394, 24);
             this.comboboxOperazioni.TabIndex = 4;
-            this.comboboxOperazioni.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboboxOperazioni.SelectedIndexChanged += new System.EventHandler(this.comboboxOperazioni_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(513, 13);
             this.dataGridView1.Name = "dataGridView1";
