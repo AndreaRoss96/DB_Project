@@ -44,7 +44,7 @@
             this.lblCategoria = new System.Windows.Forms.Label();
             this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
             this.lblSottocategoria = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxSottocategoria = new System.Windows.Forms.ComboBox();
             this.textBoxDurata = new System.Windows.Forms.TextBox();
             this.lblStato = new System.Windows.Forms.Label();
             this.checkBoxTerminata = new System.Windows.Forms.CheckBox();
@@ -62,6 +62,7 @@
             this.dateTimePickerInizioFase = new System.Windows.Forms.DateTimePicker();
             this.lblOraFine = new System.Windows.Forms.Label();
             this.lblOraInizio = new System.Windows.Forms.Label();
+            this.lblStep = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -201,6 +202,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(604, 630);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // groupBox2
             // 
@@ -208,7 +210,7 @@
             this.groupBox2.Controls.Add(this.lblCategoria);
             this.groupBox2.Controls.Add(this.comboBoxCategoria);
             this.groupBox2.Controls.Add(this.lblSottocategoria);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.comboBoxSottocategoria);
             this.groupBox2.Controls.Add(this.textBoxDurata);
             this.groupBox2.Controls.Add(this.lblStato);
             this.groupBox2.Controls.Add(this.checkBoxTerminata);
@@ -252,6 +254,7 @@
             this.comboBoxCategoria.Name = "comboBoxCategoria";
             this.comboBoxCategoria.Size = new System.Drawing.Size(239, 24);
             this.comboBoxCategoria.TabIndex = 6;
+            this.comboBoxCategoria.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategoria_SelectedIndexChanged);
             // 
             // lblSottocategoria
             // 
@@ -263,14 +266,14 @@
             this.lblSottocategoria.TabIndex = 9;
             this.lblSottocategoria.Text = "Sottocategoria";
             // 
-            // comboBox1
+            // comboBoxSottocategoria
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(107, 149);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(239, 24);
-            this.comboBox1.TabIndex = 7;
+            this.comboBoxSottocategoria.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxSottocategoria.FormattingEnabled = true;
+            this.comboBoxSottocategoria.Location = new System.Drawing.Point(107, 149);
+            this.comboBoxSottocategoria.Name = "comboBoxSottocategoria";
+            this.comboBoxSottocategoria.Size = new System.Drawing.Size(239, 24);
+            this.comboBoxSottocategoria.TabIndex = 7;
             // 
             // textBoxDurata
             // 
@@ -319,6 +322,11 @@
             // 
             this.numericUpDownCompenso.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownCompenso.Location = new System.Drawing.Point(107, 22);
+            this.numericUpDownCompenso.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numericUpDownCompenso.Name = "numericUpDownCompenso";
             this.numericUpDownCompenso.Size = new System.Drawing.Size(106, 25);
             this.numericUpDownCompenso.TabIndex = 3;
@@ -453,11 +461,21 @@
             this.lblOraInizio.TabIndex = 2;
             this.lblOraInizio.Text = "Inizio";
             // 
+            // lblStep
+            // 
+            this.lblStep.AutoSize = true;
+            this.lblStep.Location = new System.Drawing.Point(920, 22);
+            this.lblStep.Name = "lblStep";
+            this.lblStep.Size = new System.Drawing.Size(64, 13);
+            this.lblStep.TabIndex = 2;
+            this.lblStep.Text = "Step: active";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 671);
+            this.Controls.Add(this.lblStep);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView1);
@@ -475,6 +493,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -496,7 +515,7 @@
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.ComboBox comboBoxCategoria;
         private System.Windows.Forms.Label lblSottocategoria;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxSottocategoria;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label lblOraFine;
         private System.Windows.Forms.Label lblOraInizio;
@@ -513,6 +532,7 @@
         private System.Windows.Forms.Label lblData;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox codiceFiscaleSecret;
+        private System.Windows.Forms.Label lblStep;
     }
 }
 
