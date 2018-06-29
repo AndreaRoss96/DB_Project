@@ -30,11 +30,17 @@
         {
             this.comboboxClienteNominativo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.codiceFiscaleSecret = new System.Windows.Forms.TextBox();
+            this.lblData = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.comboboxNomePratica = new System.Windows.Forms.ComboBox();
             this.lblNomePratica = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
             this.lblSottocategoria = new System.Windows.Forms.Label();
@@ -47,20 +53,15 @@
             this.lblDurata = new System.Windows.Forms.Label();
             this.lblCompenso = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelDataFase = new System.Windows.Forms.Label();
+            this.dateTimeDataFase = new System.Windows.Forms.DateTimePicker();
+            this.button6 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerFineFase = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerInizioFase = new System.Windows.Forms.DateTimePicker();
             this.lblOraFine = new System.Windows.Forms.Label();
             this.lblOraInizio = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.dateTimeDataFase = new System.Windows.Forms.DateTimePicker();
-            this.labelDataFase = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.lblData = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -88,6 +89,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.codiceFiscaleSecret);
             this.groupBox1.Controls.Add(this.lblData);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.button5);
@@ -103,7 +105,55 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pratica";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // codiceFiscaleSecret
+            // 
+            this.codiceFiscaleSecret.Location = new System.Drawing.Point(246, 91);
+            this.codiceFiscaleSecret.Name = "codiceFiscaleSecret";
+            this.codiceFiscaleSecret.Size = new System.Drawing.Size(1, 25);
+            this.codiceFiscaleSecret.TabIndex = 2;
+            this.codiceFiscaleSecret.Visible = false;
+            // 
+            // lblData
+            // 
+            this.lblData.AutoSize = true;
+            this.lblData.Location = new System.Drawing.Point(29, 94);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(35, 20);
+            this.lblData.TabIndex = 22;
+            this.lblData.Text = "Data";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.DimGray;
+            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dateTimePicker1.CustomFormat = " dd-MM-yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.dateTimePicker1.Location = new System.Drawing.Point(100, 90);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowCheckBox = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(116, 25);
+            this.dateTimePicker1.TabIndex = 21;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(164, 126);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(84, 28);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "inserisci";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(74, 126);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(84, 28);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "visualizza";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // comboboxNomePratica
             // 
@@ -151,7 +201,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(604, 630);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupBox2
             // 
@@ -174,6 +223,16 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Prestazione";
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(124, 179);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(83, 28);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "inserisci";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // lblCategoria
             // 
@@ -303,6 +362,36 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Fase";
             // 
+            // labelDataFase
+            // 
+            this.labelDataFase.AutoSize = true;
+            this.labelDataFase.Location = new System.Drawing.Point(17, 25);
+            this.labelDataFase.Name = "labelDataFase";
+            this.labelDataFase.Size = new System.Drawing.Size(35, 20);
+            this.labelDataFase.TabIndex = 21;
+            this.labelDataFase.Text = "Data";
+            // 
+            // dateTimeDataFase
+            // 
+            this.dateTimeDataFase.CalendarTrailingForeColor = System.Drawing.Color.DimGray;
+            this.dateTimeDataFase.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dateTimeDataFase.CustomFormat = " dd-MM-yyyy";
+            this.dateTimeDataFase.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimeDataFase.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.dateTimeDataFase.Location = new System.Drawing.Point(97, 20);
+            this.dateTimeDataFase.Name = "dateTimeDataFase";
+            this.dateTimeDataFase.Size = new System.Drawing.Size(116, 25);
+            this.dateTimeDataFase.TabIndex = 20;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(130, 215);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(83, 28);
+            this.button6.TabIndex = 19;
+            this.button6.Text = "inserisci";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(5, 108);
@@ -364,87 +453,6 @@
             this.lblOraInizio.TabIndex = 2;
             this.lblOraInizio.Text = "Inizio";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(74, 126);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 28);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "visualizza";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(124, 179);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(83, 28);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "inserisci";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(164, 126);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(84, 28);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "inserisci";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(130, 215);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(83, 28);
-            this.button6.TabIndex = 19;
-            this.button6.Text = "inserisci";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // dateTimeDataFase
-            // 
-            this.dateTimeDataFase.CalendarTrailingForeColor = System.Drawing.Color.DimGray;
-            this.dateTimeDataFase.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.dateTimeDataFase.CustomFormat = " dd-MM-yyyy";
-            this.dateTimeDataFase.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimeDataFase.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.dateTimeDataFase.Location = new System.Drawing.Point(97, 20);
-            this.dateTimeDataFase.Name = "dateTimeDataFase";
-            this.dateTimeDataFase.Size = new System.Drawing.Size(116, 25);
-            this.dateTimeDataFase.TabIndex = 20;
-            // 
-            // labelDataFase
-            // 
-            this.labelDataFase.AutoSize = true;
-            this.labelDataFase.Location = new System.Drawing.Point(17, 25);
-            this.labelDataFase.Name = "labelDataFase";
-            this.labelDataFase.Size = new System.Drawing.Size(35, 20);
-            this.labelDataFase.TabIndex = 21;
-            this.labelDataFase.Text = "Data";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.DimGray;
-            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.dateTimePicker1.CustomFormat = " dd-MM-yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.dateTimePicker1.Location = new System.Drawing.Point(100, 90);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowCheckBox = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(116, 25);
-            this.dateTimePicker1.TabIndex = 21;
-            // 
-            // lblData
-            // 
-            this.lblData.AutoSize = true;
-            this.lblData.Location = new System.Drawing.Point(29, 94);
-            this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(35, 20);
-            this.lblData.TabIndex = 22;
-            this.lblData.Text = "Data";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -504,6 +512,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label lblData;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox codiceFiscaleSecret;
     }
 }
 
