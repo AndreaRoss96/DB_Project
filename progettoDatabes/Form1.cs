@@ -106,6 +106,7 @@ namespace progettoDatabes
 
         private void Form1_Shown(object sender, EventArgs e)
         {
+            string query = "";
             queryReaderComboBox(query, comboboxClienteNominativo, new List<string>(new string[] { "nominativo", "codiceFiscale" }));
             queryReaderComboBox(query, comboboxClienteNominativo, new List<string>(new string[] { "nominativo"}));
         }
