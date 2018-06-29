@@ -1,0 +1,14 @@
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\bin\Debug\progettoDatabes.exe.config
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\bin\Debug\progettoDatabes.exe
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\bin\Debug\progettoDatabes.pdb
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.csprojAssemblyReference.cache
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.Form1.resources
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.Properties.Resources.resources
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.csproj.GenerateResource.cache
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.csproj.CoreCompileInputs.cache
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.exe
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.pdb
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\bin\Debug\MySql.Data.dll
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\bin\Debug\Google.Protobuf.dll
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\bin\Debug\MySql.Data.xml
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.csproj.CopyComplete

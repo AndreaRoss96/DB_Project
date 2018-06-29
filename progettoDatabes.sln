@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "progettoDatabes", "progettoDatabes\progettoDatabes.csproj", "{CBD4D847-FD2C-45F0-B5E9-282F29009933}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBD4D847-FD2C-45F0-B5E9-282F29009933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBD4D847-FD2C-45F0-B5E9-282F29009933}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBD4D847-FD2C-45F0-B5E9-282F29009933}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBD4D847-FD2C-45F0-B5E9-282F29009933}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {788FEE9F-8D42-4889-86EA-D20C153C1288}
+	EndGlobalSection
+EndGlobal

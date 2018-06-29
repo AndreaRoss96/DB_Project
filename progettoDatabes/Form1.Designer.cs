@@ -1,0 +1,488 @@
+﻿namespace progettoDatabes
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Variabile di progettazione necessaria.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Pulire le risorse in uso.
+        /// </summary>
+        /// <param name="disposing">ha valore true se le risorse gestite devono essere eliminate, false in caso contrario.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Codice generato da Progettazione Windows Form
+
+        /// <summary>
+        /// Metodo necessario per il supporto della finestra di progettazione. Non modificare
+        /// il contenuto del metodo con l'editor di codice.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.comboboxClienteNominativo = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboboxNomePratica = new System.Windows.Forms.ComboBox();
+            this.lblNomePratica = new System.Windows.Forms.Label();
+            this.lblCliente = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblCategoria = new System.Windows.Forms.Label();
+            this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
+            this.lblSottocategoria = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBoxDurata = new System.Windows.Forms.TextBox();
+            this.lblStato = new System.Windows.Forms.Label();
+            this.checkBoxTerminata = new System.Windows.Forms.CheckBox();
+            this.checkBoxPagata = new System.Windows.Forms.CheckBox();
+            this.numericUpDownCompenso = new System.Windows.Forms.NumericUpDown();
+            this.lblDurata = new System.Windows.Forms.Label();
+            this.lblCompenso = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePickerFineFase = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerInizioFase = new System.Windows.Forms.DateTimePicker();
+            this.lblOraFine = new System.Windows.Forms.Label();
+            this.lblOraInizio = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.dateTimeDataFase = new System.Windows.Forms.DateTimePicker();
+            this.labelDataFase = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCompenso)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // comboboxClienteNominativo
+            // 
+            this.comboboxClienteNominativo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboboxClienteNominativo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboboxClienteNominativo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboboxClienteNominativo.FormattingEnabled = true;
+            this.comboboxClienteNominativo.IntegralHeight = false;
+            this.comboboxClienteNominativo.Items.AddRange(new object[] {
+            "Lorem ipsum",
+            "Bambatek",
+            "diocane"});
+            this.comboboxClienteNominativo.Location = new System.Drawing.Point(100, 26);
+            this.comboboxClienteNominativo.Name = "comboboxClienteNominativo";
+            this.comboboxClienteNominativo.Size = new System.Drawing.Size(246, 24);
+            this.comboboxClienteNominativo.TabIndex = 1;
+            this.comboboxClienteNominativo.Text = "Seleziona cliente...";
+            this.comboboxClienteNominativo.SelectedIndexChanged += new System.EventHandler(this.comboboxClienteNominativo_SelectedIndexChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.comboboxNomePratica);
+            this.groupBox1.Controls.Add(this.lblNomePratica);
+            this.groupBox1.Controls.Add(this.lblCliente);
+            this.groupBox1.Controls.Add(this.comboboxClienteNominativo);
+            this.groupBox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(13, 28);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(361, 130);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pratica";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // comboboxNomePratica
+            // 
+            this.comboboxNomePratica.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboboxNomePratica.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboboxNomePratica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboboxNomePratica.FormattingEnabled = true;
+            this.comboboxNomePratica.IntegralHeight = false;
+            this.comboboxNomePratica.Items.AddRange(new object[] {
+            "Inserisci nuova pratica",
+            "Lorem ipsum",
+            "Bambatek",
+            "diocane"});
+            this.comboboxNomePratica.Location = new System.Drawing.Point(100, 58);
+            this.comboboxNomePratica.Name = "comboboxNomePratica";
+            this.comboboxNomePratica.Size = new System.Drawing.Size(246, 24);
+            this.comboboxNomePratica.TabIndex = 2;
+            this.comboboxNomePratica.Text = "Seleziona nome pratica...";
+            // 
+            // lblNomePratica
+            // 
+            this.lblNomePratica.AutoSize = true;
+            this.lblNomePratica.Location = new System.Drawing.Point(6, 60);
+            this.lblNomePratica.Name = "lblNomePratica";
+            this.lblNomePratica.Size = new System.Drawing.Size(88, 20);
+            this.lblNomePratica.TabIndex = 3;
+            this.lblNomePratica.Text = "Nome pratica";
+            // 
+            // lblCliente
+            // 
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.Location = new System.Drawing.Point(25, 30);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(50, 20);
+            this.lblCliente.TabIndex = 2;
+            this.lblCliente.Text = "Cliente";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(456, 38);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(728, 708);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button4);
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.lblCategoria);
+            this.groupBox2.Controls.Add(this.comboBoxCategoria);
+            this.groupBox2.Controls.Add(this.lblSottocategoria);
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.textBoxDurata);
+            this.groupBox2.Controls.Add(this.lblStato);
+            this.groupBox2.Controls.Add(this.checkBoxTerminata);
+            this.groupBox2.Controls.Add(this.checkBoxPagata);
+            this.groupBox2.Controls.Add(this.numericUpDownCompenso);
+            this.groupBox2.Controls.Add(this.lblDurata);
+            this.groupBox2.Controls.Add(this.lblCompenso);
+            this.groupBox2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(12, 164);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(362, 227);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Prestazione";
+            // 
+            // lblCategoria
+            // 
+            this.lblCategoria.AutoSize = true;
+            this.lblCategoria.Location = new System.Drawing.Point(15, 121);
+            this.lblCategoria.Name = "lblCategoria";
+            this.lblCategoria.Size = new System.Drawing.Size(66, 20);
+            this.lblCategoria.TabIndex = 11;
+            this.lblCategoria.Text = "Categoria";
+            // 
+            // comboBoxCategoria
+            // 
+            this.comboBoxCategoria.FormattingEnabled = true;
+            this.comboBoxCategoria.Location = new System.Drawing.Point(107, 118);
+            this.comboBoxCategoria.Name = "comboBoxCategoria";
+            this.comboBoxCategoria.Size = new System.Drawing.Size(239, 28);
+            this.comboBoxCategoria.TabIndex = 6;
+            // 
+            // lblSottocategoria
+            // 
+            this.lblSottocategoria.AutoSize = true;
+            this.lblSottocategoria.Location = new System.Drawing.Point(6, 157);
+            this.lblSottocategoria.Name = "lblSottocategoria";
+            this.lblSottocategoria.Size = new System.Drawing.Size(95, 20);
+            this.lblSottocategoria.TabIndex = 9;
+            this.lblSottocategoria.Text = "Sottocategoria";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(107, 153);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(239, 28);
+            this.comboBox1.TabIndex = 7;
+            // 
+            // textBoxDurata
+            // 
+            this.textBoxDurata.Location = new System.Drawing.Point(106, 58);
+            this.textBoxDurata.Name = "textBoxDurata";
+            this.textBoxDurata.ReadOnly = true;
+            this.textBoxDurata.Size = new System.Drawing.Size(100, 26);
+            this.textBoxDurata.TabIndex = 7;
+            this.textBoxDurata.TabStop = false;
+            this.textBoxDurata.Text = "00:00:00";
+            // 
+            // lblStato
+            // 
+            this.lblStato.AutoSize = true;
+            this.lblStato.Location = new System.Drawing.Point(29, 90);
+            this.lblStato.Name = "lblStato";
+            this.lblStato.Size = new System.Drawing.Size(39, 20);
+            this.lblStato.TabIndex = 6;
+            this.lblStato.Text = "Stato";
+            // 
+            // checkBoxTerminata
+            // 
+            this.checkBoxTerminata.AutoSize = true;
+            this.checkBoxTerminata.Location = new System.Drawing.Point(106, 90);
+            this.checkBoxTerminata.Name = "checkBoxTerminata";
+            this.checkBoxTerminata.Size = new System.Drawing.Size(85, 24);
+            this.checkBoxTerminata.TabIndex = 4;
+            this.checkBoxTerminata.Text = "Terminata";
+            this.checkBoxTerminata.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxPagata
+            // 
+            this.checkBoxPagata.AutoSize = true;
+            this.checkBoxPagata.Location = new System.Drawing.Point(197, 90);
+            this.checkBoxPagata.Name = "checkBoxPagata";
+            this.checkBoxPagata.Size = new System.Drawing.Size(69, 24);
+            this.checkBoxPagata.TabIndex = 5;
+            this.checkBoxPagata.Text = "Pagata";
+            this.checkBoxPagata.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDownCompenso
+            // 
+            this.numericUpDownCompenso.Location = new System.Drawing.Point(107, 26);
+            this.numericUpDownCompenso.Name = "numericUpDownCompenso";
+            this.numericUpDownCompenso.Size = new System.Drawing.Size(106, 26);
+            this.numericUpDownCompenso.TabIndex = 3;
+            // 
+            // lblDurata
+            // 
+            this.lblDurata.AutoSize = true;
+            this.lblDurata.Location = new System.Drawing.Point(29, 58);
+            this.lblDurata.Name = "lblDurata";
+            this.lblDurata.Size = new System.Drawing.Size(46, 20);
+            this.lblDurata.TabIndex = 3;
+            this.lblDurata.Text = "Durata";
+            // 
+            // lblCompenso
+            // 
+            this.lblCompenso.AutoSize = true;
+            this.lblCompenso.Location = new System.Drawing.Point(15, 28);
+            this.lblCompenso.Name = "lblCompenso";
+            this.lblCompenso.Size = new System.Drawing.Size(75, 20);
+            this.lblCompenso.TabIndex = 2;
+            this.lblCompenso.Text = "Compenso";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.labelDataFase);
+            this.groupBox3.Controls.Add(this.dateTimeDataFase);
+            this.groupBox3.Controls.Add(this.button6);
+            this.groupBox3.Controls.Add(this.button7);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.dateTimePickerFineFase);
+            this.groupBox3.Controls.Add(this.dateTimePickerInizioFase);
+            this.groupBox3.Controls.Add(this.lblOraFine);
+            this.groupBox3.Controls.Add(this.lblOraInizio);
+            this.groupBox3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(12, 397);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(432, 340);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Fase";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(8, 152);
+            this.textBox1.MaxLength = 1024;
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox1.Size = new System.Drawing.Size(413, 120);
+            this.textBox1.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(171, 129);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 20);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Descrizione";
+            // 
+            // dateTimePickerFineFase
+            // 
+            this.dateTimePickerFineFase.CalendarTrailingForeColor = System.Drawing.Color.DimGray;
+            this.dateTimePickerFineFase.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dateTimePickerFineFase.CustomFormat = " dd-MM-yyyy  HH:mm";
+            this.dateTimePickerFineFase.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerFineFase.Location = new System.Drawing.Point(97, 96);
+            this.dateTimePickerFineFase.Name = "dateTimePickerFineFase";
+            this.dateTimePickerFineFase.Size = new System.Drawing.Size(168, 26);
+            this.dateTimePickerFineFase.TabIndex = 14;
+            // 
+            // dateTimePickerInizioFase
+            // 
+            this.dateTimePickerInizioFase.CalendarTrailingForeColor = System.Drawing.Color.DimGray;
+            this.dateTimePickerInizioFase.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dateTimePickerInizioFase.CustomFormat = " dd-MM-yyyy  HH:mm";
+            this.dateTimePickerInizioFase.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerInizioFase.Location = new System.Drawing.Point(98, 62);
+            this.dateTimePickerInizioFase.Name = "dateTimePickerInizioFase";
+            this.dateTimePickerInizioFase.Size = new System.Drawing.Size(167, 26);
+            this.dateTimePickerInizioFase.TabIndex = 13;
+            // 
+            // lblOraFine
+            // 
+            this.lblOraFine.AutoSize = true;
+            this.lblOraFine.Location = new System.Drawing.Point(17, 101);
+            this.lblOraFine.Name = "lblOraFine";
+            this.lblOraFine.Size = new System.Drawing.Size(35, 20);
+            this.lblOraFine.TabIndex = 3;
+            this.lblOraFine.Text = "Fine";
+            // 
+            // lblOraInizio
+            // 
+            this.lblOraInizio.AutoSize = true;
+            this.lblOraInizio.Location = new System.Drawing.Point(17, 68);
+            this.lblOraInizio.Name = "lblOraInizio";
+            this.lblOraInizio.Size = new System.Drawing.Size(40, 20);
+            this.lblOraInizio.TabIndex = 2;
+            this.lblOraInizio.Text = "Inizio";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(90, 88);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(84, 28);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "visualizza";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(130, 192);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(84, 28);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "visualizza\r\n";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(220, 192);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(83, 28);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "inserisci";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(180, 88);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(84, 28);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "inserisci";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(218, 278);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(83, 28);
+            this.button6.TabIndex = 19;
+            this.button6.Text = "inserisci";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(128, 278);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(84, 28);
+            this.button7.TabIndex = 18;
+            this.button7.Text = "visualizza\r\n";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // dateTimeDataFase
+            // 
+            this.dateTimeDataFase.CalendarTrailingForeColor = System.Drawing.Color.DimGray;
+            this.dateTimeDataFase.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dateTimeDataFase.CustomFormat = " dd-MM-yyyy";
+            this.dateTimeDataFase.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimeDataFase.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.dateTimeDataFase.Location = new System.Drawing.Point(98, 25);
+            this.dateTimeDataFase.Name = "dateTimeDataFase";
+            this.dateTimeDataFase.Size = new System.Drawing.Size(116, 26);
+            this.dateTimeDataFase.TabIndex = 20;
+            // 
+            // labelDataFase
+            // 
+            this.labelDataFase.AutoSize = true;
+            this.labelDataFase.Location = new System.Drawing.Point(17, 31);
+            this.labelDataFase.Name = "labelDataFase";
+            this.labelDataFase.Size = new System.Drawing.Size(35, 20);
+            this.labelDataFase.TabIndex = 21;
+            this.labelDataFase.Text = "Data";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1184, 749);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.groupBox1);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCompenso)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+        private System.Windows.Forms.ComboBox comboboxClienteNominativo;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblCliente;
+        private System.Windows.Forms.ComboBox comboboxNomePratica;
+        private System.Windows.Forms.Label lblNomePratica;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.NumericUpDown numericUpDownCompenso;
+        private System.Windows.Forms.Label lblDurata;
+        private System.Windows.Forms.Label lblCompenso;
+        private System.Windows.Forms.TextBox textBoxDurata;
+        private System.Windows.Forms.Label lblStato;
+        private System.Windows.Forms.CheckBox checkBoxTerminata;
+        private System.Windows.Forms.CheckBox checkBoxPagata;
+        private System.Windows.Forms.Label lblCategoria;
+        private System.Windows.Forms.ComboBox comboBoxCategoria;
+        private System.Windows.Forms.Label lblSottocategoria;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label lblOraFine;
+        private System.Windows.Forms.Label lblOraInizio;
+        private System.Windows.Forms.DateTimePicker dateTimePickerInizioFase;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFineFase;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label labelDataFase;
+        private System.Windows.Forms.DateTimePicker dateTimeDataFase;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+    }
+}
+
