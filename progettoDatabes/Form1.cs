@@ -164,7 +164,7 @@ namespace progettoDatabes
                     (from p in db.Prestaziones
                      join s in db.Sottocategorias on p.CodiceSottocategoria equals s.CodiceSottocategoria
                      where p.CodiceFiscale == codiceFiscaleSecret.Text
-                  //   where p.CodicePratica == dataGridView1["codicePratica", e.RowIndex].Value
+                     where p.CodicePratica == dataGridView1["codicePratica", e.RowIndex].Value
                      select new
                      {
                          p.CodicePratica,
