@@ -15,7 +15,6 @@ namespace progettoDatabes
     public partial class Form1 : Form
     {
         string connectionString = "Server=localhost;Port=3307;database=studioprofessionale;UID=root;password=;SslMode=none";
-        List<Tuple<String, String>> listCliente = new List<Tuple<String, String>>();
 
         public DataGridView DataGridView1 { get; private set; }
 
@@ -85,8 +84,7 @@ namespace progettoDatabes
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        foreach (String x in listColumn)
-                        {
+                        foreach (String x in listColumn) {
                             delirio = delirio + reader.GetString(x);
                             if (doTrimEnd)
                                 delirio = delirio + " - ";
@@ -120,68 +118,127 @@ namespace progettoDatabes
 
         private void comboboxClienteNominativo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            string prova;
+            string nominativoCodiceFiscale;
             string codiceFiscale;
-            prova = comboboxClienteNominativo.Items[comboboxClienteNominativo.SelectedIndex].ToString();
-            codiceFiscale = prova.Split('-')[1].ToString();
+            nominativoCodiceFiscale = comboboxClienteNominativo.Items[comboboxClienteNominativo.SelectedIndex].ToString();
+            codiceFiscale = nominativoCodiceFiscale.Split('-')[1].ToString();
             codiceFiscaleSecret.Text = codiceFiscale;
-
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-
             using (var db = new DataModel.StudioprofessionaleDB())
             {
-                var q =
-                    from c in db.Clientes
-                    select c;
+                var queryCliente =
+                    (from c in db.Clientes
+                     select new
+                     {
+                         c.Nominativo,
+                         c.CodiceFiscale
+                     });
 
-                foreach (var c in q)
+                var queryCategoria =
+                   (from c in db.Categorias
+                    select new
+                    {
+                        c.CodiceCategoria,
+                        c.Nome
+                    }).OrderBy(x => x.CodiceCategoria);
+
+                foreach (var c in queryCliente)
                     comboboxClienteNominativo.Items.Add(c.Nominativo + "-" + c.CodiceFiscale);
+
+                foreach (var ca in queryCategoria)
+                    comboBoxCategoria.Items.Add(ca.Nome);
+                
             }
-            //queryReaderComboBox("SELECT * FROM cliente", comboboxClienteNominativo, new List<string>(new string[] { "nominativo", "codiceFiscale" }));
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-
-            /*
-            String query = String.Format(@"SELECT * FROM prestazione, sottocategoria WHERE prestazione.codiceSottocategoria = sottocategoria.codiceSottocategoria AND prestazione.codiceFiscale = ""{0}"";",  codiceFiscaleSecret.Text );
-            queryReaderDataGridView(query, dataGridView1, new List<string>(new string[] { "nome","compenso", "durata", "pagata", "terminata"}));
-            *///queryReaderComboBox("SELECT * FROM cliente WHERE clien", comboboxClienteNominativo, new List<string>(new string[] { "nominativo", "codiceFiscale" }));
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
             using (var db = new DataModel.StudioprofessionaleDB())
             {
-                var q =
-                    (from p in db.Prestaziones
-                     join s in db.Sottocategorias on p.CodiceSottocategoria equals s.CodiceSottocategoria
-                     where p.CodiceFiscale == codiceFiscaleSecret.Text
-                     where p.CodicePratica == dataGridView1["codicePratica", e.RowIndex].Value
+                var query =
+                    (from pratica in db.Praticas
+                     where pratica.CodiceFiscale == codiceFiscaleSecret.Text
                      select new
                      {
-                         p.CodicePratica,
-                         p.CodicePrestazione,
-                         s.Nome,
-                         p.Compenso,
-                         p.Durata,
-                         p.Pagata,
-                         p.Terminata,
+                         pratica.Nome,
+                         numeroPratica = pratica.CodicePratica,
+                         pratica.DataRichiesta
                      });
-
-                dataGridView1.DataSource = q.ToList();
+                dataGridView1.DataSource = query.ToList();
             }
+            lblStep.Text = "Step: pratica";
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //DA PRATICHE -> VISUALZIZA E FILL GROUPBOX PRESTAZIONE
+            if(lblStep.Text.Equals("Step: active"))
+            {
+
+            }
+            else if(lblStep.Text.Equals("Step: pratica"))
+            {
+                using (var db = new DataModel.StudioprofessionaleDB())
+                {
+                    var q =
+                        (from p in db.Prestaziones
+                         join s in db.Sottocategorias on p.CodiceSottocategoria equals s.CodiceSottocategoria
+                         join ca in db.Categorias on s.CodiceCategoria equals ca.CodiceCategoria
+                         where p.CodiceFiscale == codiceFiscaleSecret.Text
+                         where p.CodicePratica == Int32.Parse(dataGridView1["numeroPratica", e.RowIndex].Value.ToString())
+                         select new
+                         {
+                             s.Nome,
+                             p.Compenso,
+                             p.Durata,
+                             p.Pagata,
+                             p.Terminata,
+                             p.CodicePrestazione,
+                             NomeCategoria = ca.Nome
+                         }).OrderBy((x) => (x.CodicePrestazione));
+                    dataGridView1.DataSource = q.ToList();
+                    dataGridView1.Columns["CodicePrestazione"].Visible = false;
+                    dataGridView1.Columns["NomeCategoria"].Visible = false;
+                    lblStep.Text = "Step: prestazione";
+                }
+            }
+            else if(lblStep.Text.Equals("Step: prestazione"))
+            {
+                comboBoxCategoria.SelectedText = dataGridView1["NomeCategoria", e.RowIndex].Value.ToString();
+                numericUpDownCompenso.Value = Int32.Parse(dataGridView1["Compenso", e.RowIndex].Value.ToString());
+                checkBoxPagata.Checked = (bool) dataGridView1["Pagata", e.RowIndex].Value;
+                checkBoxTerminata.Checked = (bool)dataGridView1["Terminata", e.RowIndex].Value;
+                textBoxDurata.Text = dataGridView1["Durata", e.RowIndex].Value.ToString();
+                comboBoxSottocategoria.SelectedText = dataGridView1["Nome", e.RowIndex].Value.ToString();
+            }
+            
+
+            //PRESTAZIONI -> FILL FASE
+        }
+
+        private void comboBoxCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxSottocategoria.Items.Clear();
+            using (var db = new DataModel.StudioprofessionaleDB())
+            {
+                var querySottocategoria =
+                    (from sc in db.Sottocategorias
+                     join ca in db.Categorias on sc.CodiceCategoria equals ca.CodiceCategoria
+                     where sc.CodiceCategoria == comboBoxCategoria.SelectedIndex + 1
+                     select new
+                     {
+                         Attivita = sc.Nome,
+                         sc.CodiceSottocategoria
+                     }).OrderBy(x => x.CodiceSottocategoria);
+               
+                foreach (var x in querySottocategoria)
+                {
+                    comboBoxSottocategoria.Items.Add(x.Attivita);
+                }
+            }
 
         }
     }
