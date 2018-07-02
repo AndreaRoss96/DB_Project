@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LinqToDB;
+using MySql.Data.MySqlClient;
+using MySql.Data;
 
 namespace progettoDatabes
 {
@@ -309,8 +311,10 @@ namespace progettoDatabes
                 newDip.CAP = textBoxCAP.Text;
                 newDip.CostoOrario = Int32.Parse(textBoxCostoOrario.Text);
                 newDip.CodiceRuolo = 5;//Int32.Parse(comboBoxRuolo.Text.TrimEnd(new char[] { '-', ' ' }));
+                newDip.Tipo = 'c';
                 if (tipo)
                 {
+                    newDip.Tipo = 'i';
                     newDip.Stipendio = Int32.Parse(textBoxTipo.Text);
                 }
                 db.Insert(newDip);
