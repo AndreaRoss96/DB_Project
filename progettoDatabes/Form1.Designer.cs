@@ -30,12 +30,12 @@
         {
             this.comboboxClienteNominativo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxNomePratica = new System.Windows.Forms.TextBox();
             this.codiceFiscaleSecret = new System.Windows.Forms.TextBox();
             this.lblData = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerDataPratica = new System.Windows.Forms.DateTimePicker();
             this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboboxNomePratica = new System.Windows.Forms.ComboBox();
             this.lblNomePratica = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -56,7 +56,7 @@
             this.labelDataFase = new System.Windows.Forms.Label();
             this.dateTimeDataFase = new System.Windows.Forms.DateTimePicker();
             this.button6 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxDescrizioneFase = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerFineFase = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerInizioFase = new System.Windows.Forms.DateTimePicker();
@@ -90,12 +90,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxNomePratica);
             this.groupBox1.Controls.Add(this.codiceFiscaleSecret);
             this.groupBox1.Controls.Add(this.lblData);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dateTimePickerDataPratica);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.comboboxNomePratica);
             this.groupBox1.Controls.Add(this.lblNomePratica);
             this.groupBox1.Controls.Add(this.lblCliente);
             this.groupBox1.Controls.Add(this.comboboxClienteNominativo);
@@ -106,6 +106,13 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pratica";
+            // 
+            // textBoxNomePratica
+            // 
+            this.textBoxNomePratica.Location = new System.Drawing.Point(100, 56);
+            this.textBoxNomePratica.Name = "textBoxNomePratica";
+            this.textBoxNomePratica.Size = new System.Drawing.Size(246, 25);
+            this.textBoxNomePratica.TabIndex = 23;
             // 
             // codiceFiscaleSecret
             // 
@@ -124,18 +131,18 @@
             this.lblData.TabIndex = 22;
             this.lblData.Text = "Data";
             // 
-            // dateTimePicker1
+            // dateTimePickerDataPratica
             // 
-            this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.DimGray;
-            this.dateTimePicker1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.dateTimePicker1.CustomFormat = " dd-MM-yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.dateTimePicker1.Location = new System.Drawing.Point(100, 90);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowCheckBox = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(116, 25);
-            this.dateTimePicker1.TabIndex = 21;
+            this.dateTimePickerDataPratica.CalendarTrailingForeColor = System.Drawing.Color.DimGray;
+            this.dateTimePickerDataPratica.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.dateTimePickerDataPratica.CustomFormat = " dd-MM-yyyy";
+            this.dateTimePickerDataPratica.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerDataPratica.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.dateTimePickerDataPratica.Location = new System.Drawing.Point(100, 90);
+            this.dateTimePickerDataPratica.Name = "dateTimePickerDataPratica";
+            this.dateTimePickerDataPratica.ShowCheckBox = true;
+            this.dateTimePickerDataPratica.Size = new System.Drawing.Size(116, 25);
+            this.dateTimePickerDataPratica.TabIndex = 21;
             // 
             // button5
             // 
@@ -145,6 +152,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "inserisci";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button2
             // 
@@ -155,24 +163,6 @@
             this.button2.Text = "visualizza";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // comboboxNomePratica
-            // 
-            this.comboboxNomePratica.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboboxNomePratica.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboboxNomePratica.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboboxNomePratica.FormattingEnabled = true;
-            this.comboboxNomePratica.IntegralHeight = false;
-            this.comboboxNomePratica.Items.AddRange(new object[] {
-            "Inserisci nuova pratica",
-            "Lorem ipsum",
-            "Bambatek",
-            "diocane"});
-            this.comboboxNomePratica.Location = new System.Drawing.Point(100, 58);
-            this.comboboxNomePratica.Name = "comboboxNomePratica";
-            this.comboboxNomePratica.Size = new System.Drawing.Size(246, 24);
-            this.comboboxNomePratica.TabIndex = 2;
-            this.comboboxNomePratica.Text = "Seleziona nome pratica...";
             // 
             // lblNomePratica
             // 
@@ -356,7 +346,7 @@
             this.groupBox3.Controls.Add(this.labelDataFase);
             this.groupBox3.Controls.Add(this.dateTimeDataFase);
             this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.textBoxDescrizioneFase);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.dateTimePickerFineFase);
             this.groupBox3.Controls.Add(this.dateTimePickerInizioFase);
@@ -400,15 +390,15 @@
             this.button6.Text = "inserisci";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxDescrizioneFase
             // 
-            this.textBox1.Location = new System.Drawing.Point(5, 108);
-            this.textBox1.MaxLength = 1024;
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(348, 101);
-            this.textBox1.TabIndex = 17;
+            this.textBoxDescrizioneFase.Location = new System.Drawing.Point(10, 108);
+            this.textBoxDescrizioneFase.MaxLength = 1024;
+            this.textBoxDescrizioneFase.Multiline = true;
+            this.textBoxDescrizioneFase.Name = "textBoxDescrizioneFase";
+            this.textBoxDescrizioneFase.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxDescrizioneFase.Size = new System.Drawing.Size(348, 101);
+            this.textBoxDescrizioneFase.TabIndex = 17;
             // 
             // label1
             // 
@@ -501,7 +491,6 @@
         private System.Windows.Forms.ComboBox comboboxClienteNominativo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblCliente;
-        private System.Windows.Forms.ComboBox comboboxNomePratica;
         private System.Windows.Forms.Label lblNomePratica;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -521,7 +510,7 @@
         private System.Windows.Forms.Label lblOraInizio;
         private System.Windows.Forms.DateTimePicker dateTimePickerInizioFase;
         private System.Windows.Forms.DateTimePicker dateTimePickerFineFase;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxDescrizioneFase;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button2;
@@ -530,9 +519,10 @@
         private System.Windows.Forms.DateTimePicker dateTimeDataFase;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label lblData;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDataPratica;
         private System.Windows.Forms.TextBox codiceFiscaleSecret;
         private System.Windows.Forms.Label lblStep;
+        private System.Windows.Forms.TextBox textBoxNomePratica;
     }
 }
 
