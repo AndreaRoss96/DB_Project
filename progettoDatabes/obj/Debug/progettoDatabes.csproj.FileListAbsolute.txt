@@ -13,3 +13,21 @@ D:\applicazionedatabes\progettoDatabes\obj\Debug\progettoDatabes.Properties.Reso
 D:\applicazionedatabes\progettoDatabes\obj\Debug\progettoDatabes.csproj.GenerateResource.Cache
 D:\applicazionedatabes\progettoDatabes\obj\Debug\progettoDatabes.exe
 D:\applicazionedatabes\progettoDatabes\obj\Debug\progettoDatabes.pdb
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.Form1.resources
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.FormInserimentiAmministratore.resources
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.FormPerDipendente.resources
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.Properties.Resources.resources
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.exe
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.pdb
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\bin\Debug\progettoDatabes.exe.config
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\bin\Debug\progettoDatabes.exe
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\bin\Debug\progettoDatabes.pdb
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\bin\Debug\linq2db.dll
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\bin\Debug\MySql.Data.dll
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\bin\Debug\linq2db.pdb
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\bin\Debug\linq2db.xml
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\bin\Debug\MySql.Data.xml
+C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.csproj.CopyComplete

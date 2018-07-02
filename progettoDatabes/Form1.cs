@@ -196,10 +196,12 @@ namespace progettoDatabes
                              p.Durata,
                              p.Pagata,
                              p.Terminata,
+                             p.CodicePratica,
                              p.CodicePrestazione,
                              NomeCategoria = ca.Nome
                          }).OrderBy((x) => (x.CodicePrestazione));
                     dataGridView1.DataSource = q.ToList();
+                    dataGridView1.Columns["CodicePratica"].Visible = false;
                     dataGridView1.Columns["CodicePrestazione"].Visible = false;
                     dataGridView1.Columns["NomeCategoria"].Visible = false;
                     lblStep.Text = "Step: prestazione";
