@@ -14,7 +14,7 @@ namespace progettoDatabes
 {
     public partial class FormPerDipendente : Form
     {
-        //string connectionString = "Server=localhost;Port=3307;database=studioprofessionale;UID=root;password=;SslMode=none";
+        //string connectionString = "Server=localhost;Port=3306;database=studioprofessionale;UID=root;password=;SslMode=none";
         List<Tuple<String, String>> listCliente = new List<Tuple<String, String>>();
         public FormPerDipendente()
         {
@@ -76,7 +76,7 @@ namespace progettoDatabes
         }
 
         private void comboboxCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {   //query 20
             string codiceCliente = (string)comboboxCliente.SelectedItem;
             codiceCliente = codiceCliente.Split('-')[1];
             codiceCliente = codiceCliente.Trim(' ');
@@ -84,23 +84,29 @@ namespace progettoDatabes
             {
                 var query =
                     (from f in db.Fases
-                     join pe in db.Prestaziones on f.CodiceFiscale equals pe.CodiceFiscale
-                     join pa in db.Praticas on pe.CodicePratica equals pa.CodicePratica
+                     join pa in db.Praticas on new { f.CodiceFiscale,f.CodicePratica } equals new { pa.CodiceFiscale,pa.CodicePratica }
+                     join pe in db.Prestaziones on new { f.CodiceFiscale, f.CodicePratica,f.CodicePrestazione } equals new { pe.CodiceFiscale, pe.CodicePratica,pe.CodicePrestazione }
+                      //  join pe in db.Prestaziones on f.CodiceFiscale equals pe.CodiceFiscale 
+                    //   join pa in db.Praticas on pe.CodicePratica equals pa.CodicePratica
+                     where f.Matricola == 3
                      where f.CodiceFiscale == codiceCliente
-                     where f.CodicePratica == pe.CodicePratica
-                     where f.Matricola == 1
-                     where pa.CodiceFiscale == pe.CodiceFiscale
+                   // where f.CodicePratica == pe.CodicePratica
+                    // where pa.CodiceFiscale == pe.CodiceFiscale
                      select new
                      {
+                         f.Matricola,
                          pa.Nome,
+                         pa.CodicePratica,
                          pe.CodicePrestazione,
                          pe.CodiceSottocategoria,
                          pe.Compenso,
                          pe.Durata,
                          pe.Pagata,
                          pe.Terminata
-                     });
+                     }).Distinct();
                 dataGridView1.DataSource = query.ToList();
+               // dataGridView1.Columns["pagata"].ReadOnly = true;
+               // dataGridView1.Columns["terminata"].ReadOnly = true;
             }
         }
 

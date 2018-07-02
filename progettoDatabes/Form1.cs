@@ -14,7 +14,7 @@ namespace progettoDatabes
 
     public partial class Form1 : Form
     {
-        string connectionString = "Server=localhost;Port=3307;database=studioprofessionale;UID=root;password=;SslMode=none";
+        string connectionString = "Server=localhost;Port=3306;database=studioprofessionale;UID=root;password=;SslMode=none";
 
         public DataGridView DataGridView1 { get; private set; }
 
