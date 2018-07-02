@@ -16,6 +16,8 @@ namespace progettoDatabes
     {
         //string connectionString = "Server=localhost;Port=3306;database=studioprofessionale;UID=root;password=;SslMode=none";
         List<Tuple<String, String>> listCliente = new List<Tuple<String, String>>();
+        string codiceCliente = null;
+        int codicePratica=-1;
         public FormPerDipendente()
         {
             InitializeComponent();
@@ -52,12 +54,13 @@ namespace progettoDatabes
 
         private void comboboxOperazioni_SelectedIndexChanged(object sender, EventArgs e)
         {
+            buttonOperazione.Enabled = true;
             if (comboboxOperazioni.SelectedIndex == 1)
             {
                 comboboxPratica.Enabled = true;
                 labelPratica.Enabled = true;
-                comboboxCliente.Enabled = false;
-                labelCliente.Enabled = false;
+                comboboxCliente.Enabled = true;
+                labelCliente.Enabled = true;
             }
             else if (comboboxOperazioni.SelectedIndex == 2)
             {
@@ -77,40 +80,105 @@ namespace progettoDatabes
 
         private void comboboxCliente_SelectedIndexChanged(object sender, EventArgs e)
         {   //query 20
-            string codiceCliente = (string)comboboxCliente.SelectedItem;
-            codiceCliente = codiceCliente.Split('-')[1];
-            codiceCliente = codiceCliente.Trim(' ');
-            using (var db = new DataModel.StudioprofessionaleDB())
+            codiceCliente = (string)comboboxCliente.SelectedItem;
+            codiceCliente = codiceCliente.Split('-')[1].Trim(' ');
+        }
+        private void comboboxPratica_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string s;
+            s = (string)comboboxPratica.SelectedItem;
+            s = s.Split('-')[0].Trim(' ');
+            codicePratica = int.Parse(s);
+            
+        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (comboboxOperazioni.SelectedIndex == 0)
             {
-                var query =
-                    (from f in db.Fases
-                     join pa in db.Praticas on new { f.CodiceFiscale,f.CodicePratica } equals new { pa.CodiceFiscale,pa.CodicePratica }
-                     join pe in db.Prestaziones on new { f.CodiceFiscale, f.CodicePratica,f.CodicePrestazione } equals new { pe.CodiceFiscale, pe.CodicePratica,pe.CodicePrestazione }
-                      //  join pe in db.Prestaziones on f.CodiceFiscale equals pe.CodiceFiscale 
-                    //   join pa in db.Praticas on pe.CodicePratica equals pa.CodicePratica
+                //query 2
+                using (var db = new DataModel.StudioprofessionaleDB())
+                {
+                    var query =
+                        (from c in db.Clientes
+                         join pa in db.Praticas on c.CodiceFiscale equals pa.CodiceFiscale
+                         join f in db.Fases on new { pa.CodicePratica, pa.CodiceFiscale } equals new { f.CodicePratica, f.CodiceFiscale }
+                         where f.Matricola == 3
+                         select new
+                         {
+                             c.CodiceFiscale,
+                             c.Nominativo,
+                             pa.CodicePratica,
+                             pa.Nome,
+                             f.CodicePrestazione,
+                             f.Inizio,
+                             f.Fine,
+                             f.Descrizione
+
+                         });
+                    MessageBox.Show(query.Count().ToString());
+                    dataGridView1.DataSource = query.ToList();
+                }
+            }
+            else if (comboboxOperazioni.SelectedIndex == 1)
+            {
+                //query 3
+                using (var db = new DataModel.StudioprofessionaleDB())
+                {    
+                    var query =
+                        (from p in db.Prestaziones
+                         where p.CodicePratica == codicePratica
+                         where p.CodiceFiscale == codiceCliente
+                         select new
+                         {
+                            p.CodiceFiscale,
+                            p.CodicePrestazione,
+                            p.Compenso,
+                            p.Pagata,
+                            p.Terminata
+
+                         });
+                    dataGridView1.DataSource = query.ToList();
+                }
+
+            }
+            else 
+            {
+                //query 20
+                using (var db = new DataModel.StudioprofessionaleDB())
+                {
+                    var query =
+                        (from f in db.Fases
+                         join pa in db.Praticas on new { f.CodiceFiscale, f.CodicePratica } equals new { pa.CodiceFiscale, pa.CodicePratica }
+                         join pe in db.Prestaziones on new { f.CodiceFiscale, f.CodicePratica, f.CodicePrestazione } equals new { pe.CodiceFiscale, pe.CodicePratica, pe.CodicePrestazione }
+                         //  join pe in db.Prestaziones on f.CodiceFiscale equals pe.CodiceFiscale 
+                         //   join pa in db.Praticas on pe.CodicePratica equals pa.CodicePratica
                      where f.Matricola == 3
-                     where f.CodiceFiscale == codiceCliente
-                   // where f.CodicePratica == pe.CodicePratica
-                    // where pa.CodiceFiscale == pe.CodiceFiscale
+                         where f.CodiceFiscale == codiceCliente
+                     // where f.CodicePratica == pe.CodicePratica
+                     // where pa.CodiceFiscale == pe.CodiceFiscale
                      select new
-                     {
-                         f.Matricola,
-                         pa.Nome,
-                         pa.CodicePratica,
-                         pe.CodicePrestazione,
-                         pe.CodiceSottocategoria,
-                         pe.Compenso,
-                         pe.Durata,
-                         pe.Pagata,
-                         pe.Terminata
-                     }).Distinct();
-                dataGridView1.DataSource = query.ToList();
-               // dataGridView1.Columns["pagata"].ReadOnly = true;
-               // dataGridView1.Columns["terminata"].ReadOnly = true;
+                         {
+                             f.Matricola,
+                             pa.Nome,
+                             pa.CodicePratica,
+                             pe.CodicePrestazione,
+                             pe.CodiceSottocategoria,
+                             pe.Compenso,
+                             pe.Durata,
+                             pe.Pagata,
+                             pe.Terminata
+                         }).Distinct();
+                    dataGridView1.DataSource = query.ToList();
+                }
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void label1_Click_1(object sender, EventArgs e)
         {
 
         }
