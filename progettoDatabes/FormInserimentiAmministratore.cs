@@ -39,11 +39,11 @@ namespace progettoDatabes
 
                 foreach (var x in queryCategoria)
                 {
-                    comboBoxCategoria.Items.Add(x.Nome);
+                    comboBoxCategoria.Items.Add(x.CodiceCategoria + " - " + x.Nome);
                 }
                 foreach (var x in queryDipendente)
                 {
-                    comboBoxDipendente.Items.Add(x.Nome + " " + x.Cognome + " - " + x.Matricola);
+                    comboBoxDipendente.Items.Add(x.Matricola + " - " + x.Nome + " " + x.Cognome);
                 }
                 foreach (var x in queryRuolo)
                 {
@@ -95,11 +95,15 @@ namespace progettoDatabes
             checkBoxAzienda.Checked = false;
             checkBoxImpiegato.Visible = false;
             checkBoxImpiegato.Checked = false;
+            checkBoxPF.Visible = false;
+            checkBoxPF.Checked = false;
 
             this.tipo = false;
 
             groupBoxAllocazione.Visible = false;
             comboBoxDipendente.ResetText();
+            checkedListBox.Items.Clear();
+            dateTimePickerResponsabilità.Enabled = false;
         }
 
         private void initializePersonLabels()
@@ -205,6 +209,8 @@ namespace progettoDatabes
             initializeGeneric();
             LabelCostoFisso.Visible = true;
             textBoxCittàCosto.Visible = true;
+            checkBoxAzienda.Visible = false;
+            checkBoxPF.Visible = false;
 
             LabelCategoria.Visible = true;
             comboBoxCategoria.Visible = true;
@@ -221,7 +227,6 @@ namespace progettoDatabes
         private void buttonAllocazione_Click(object sender, EventArgs e)
         {
             this.execution = "Allocazione";
-            checkedListBox.Items.Clear();
             initializeLabels();
             groupBoxAllocazione.Visible = true;
             label2.Visible = true;
@@ -236,7 +241,7 @@ namespace progettoDatabes
                    select p);
                 foreach (var x in querySede)
                 {
-                    checkedListBox.Items.Add(x.Nome + " " + x.Via + " " + x.Citta + " " + x.CAP);
+                    checkedListBox.Items.Add(x.CodiceSede + " - " + x.Nome + " " + x.Via + " " + x.Citta + " " + x.CAP);
                 }
             }
         }
@@ -244,8 +249,8 @@ namespace progettoDatabes
         private void buttonResponsabilità_Click(object sender, EventArgs e)
         {
             this.execution = "Responsabilità";
-            checkedListBox.Items.Clear();
             initializeLabels();
+            dateTimePickerResponsabilità.Enabled = true;
             groupBoxAllocazione.Visible = true;
             label4.Visible = true;
             label5.Visible = true;
@@ -263,7 +268,7 @@ namespace progettoDatabes
 
                 foreach (var x in queryResponsabilità)
                 {
-                    checkedListBox.Items.Add(x.Nominativo + " " + x.CodiceFiscale);
+                    checkedListBox.Items.Add(x.Nominativo + " - " + x.CodiceFiscale);
                 }
             }
         }
@@ -300,40 +305,138 @@ namespace progettoDatabes
             initializeLabels();
         }
 
+        /**************************** QUERY DI INSERIMENTO *************************************/
         private void insertDipendente()
         {
             using (var db = new DataModel.StudioprofessionaleDB())
             {
-                DataModel.Dipendente newDip = new DataModel.Dipendente();
-                newDip.Nome = textBoxNome.Text;
-                newDip.Cognome = textBoxCognomeCF.Text;
-                newDip.Via = textBoxVia.Text;
-                newDip.CAP = textBoxCAP.Text;
-                newDip.CostoOrario = Int32.Parse(textBoxCostoOrario.Text);
-                newDip.CodiceRuolo = 5;//Int32.Parse(comboBoxRuolo.Text.TrimEnd(new char[] { '-', ' ' }));
-                newDip.Tipo = 'c';
+                DataModel.Dipendente newElem = new DataModel.Dipendente();
+                newElem.Nome = textBoxNome.Text;
+                newElem.Cognome = textBoxCognomeCF.Text;
+                newElem.Via = textBoxVia.Text;
+                newElem.Citta = textBoxCittàCosto.Text;
+                newElem.CAP = textBoxCAP.Text;
+                newElem.CostoOrario = Int32.Parse(textBoxCostoOrario.Text);
+                newElem.CodiceRuolo = 33;//Int32.Parse(comboBoxRuolo.Text.TrimEnd(new char[] { '-', ' ' }));
+                newElem.Tipo = 'c';
                 if (tipo)
                 {
-                    newDip.Tipo = 'i';
-                    newDip.Stipendio = Int32.Parse(textBoxTipo.Text);
+                    newElem.Tipo = 'i';
+                    newElem.Stipendio = Int32.Parse(textBoxTipo.Text);
                 }
-                db.Insert(newDip);
+
+                db.Insert(newElem);
             }
         }
 
-        private void insertCliente() { }
+        private void insertCliente()
+        {
+            using (var db = new DataModel.StudioprofessionaleDB())
+            {
+                DataModel.Cliente newElem = new DataModel.Cliente();
+                newElem.Nominativo = textBoxNome.Text;
+                newElem.CodiceFiscale = textBoxCognomeCF.Text;
+                newElem.Via = textBoxVia.Text;
+                newElem.Citta = textBoxCittàCosto.Text;
+                newElem.CAP = textBoxCAP.Text;
+                newElem.Tipo = 'p';
+                if (tipo)
+                {
+                    newElem.Tipo = 'a';
+                    newElem.PartitaIVA = textBoxTipo.Text;
+                }
 
-        private void insertSede() { }
+                db.Insert(newElem);
+            }
+        }
 
-        private void insertCategoria() { }
+        private void insertSede()
+        {
+            using (var db = new DataModel.StudioprofessionaleDB())
+            {
+                DataModel.Sede newElem = new DataModel.Sede();
+                newElem.Nome = textBoxNome.Text;
+                newElem.Via = textBoxVia.Text;
+                newElem.Citta = textBoxCittàCosto.Text;
+                newElem.CAP = textBoxCAP.Text;
 
-        private void insertSottoCategoria() { }
+                db.Insert(newElem);
+            }
+        }
 
-        private void insertRuolo() { }
+        private void insertCategoria()
+        {
+            using (var db = new DataModel.StudioprofessionaleDB())
+            {
+                DataModel.Categoria newElem = new DataModel.Categoria();
+                newElem.Nome = textBoxNome.Text;
+                newElem.Descrizione = TextBoxDescrizione.Text;
 
-        private void insertAllocazione() { }
+                db.Insert(newElem);
+            }
+        }
 
-        private void insertResponsabilita() { }
+        private void insertSottoCategoria()
+        {
+            using (var db = new DataModel.StudioprofessionaleDB())
+            {
+                DataModel.Sottocategoria newElem = new DataModel.Sottocategoria();
+                newElem.Nome = textBoxNome.Text;
+                newElem.Descrizione = TextBoxDescrizione.Text;
+                newElem.CodiceCategoria = Int32.Parse(comboBoxCategoria.Text.TrimEnd(new char[] {' ', '-'}));
+                newElem.TipoAZ = checkBoxAzienda.Checked;
+                newElem.TipoPF = checkBoxPF.Checked;
+              
+                db.Insert(newElem);
+            }
+        }
+
+        private void insertRuolo()
+        {
+            using (var db = new DataModel.StudioprofessionaleDB())
+            {
+                DataModel.Ruolo newElem = new DataModel.Ruolo();
+                newElem.Nome = textBoxNome.Text;
+                /*il codice dovrebbe essere incrementale*/
+
+                db.Insert(newElem);
+            }
+        }
+
+        private void insertAllocazione()
+        {
+            using (var db = new DataModel.StudioprofessionaleDB())
+            {
+                /*da rivedere*/
+                DataModel.Allocazione newElem = new DataModel.Allocazione();
+                foreach (var c in checkedListBox.CheckedItems)
+                {
+                    var s = c.ToString();
+                    newElem.Matricola = Int32.Parse(comboBoxDipendente.Text.TrimEnd(new char[] { ' ', '-' }));
+                    newElem.CodiceSede = Int32.Parse(s.TrimEnd(new char[] { ' ', '-' }));
+                }
+                
+                db.Insert(newElem);
+            }
+        }
+
+        private void insertResponsabilita()
+        {
+            using (var db = new DataModel.StudioprofessionaleDB())
+            {
+                /*da rivedere*/
+                DataModel.Responsabile newElem = new DataModel.Responsabile();
+                foreach (var c in checkedListBox.CheckedItems)
+                {
+                    var s = c.ToString();
+                    newElem.CodiceFiscale = s.TrimEnd(new char[] { ' ', '-' });
+                    newElem.Matricola = Int32.Parse(comboBoxDipendente.Text.TrimEnd(new char[] { ' ', '-' }));
+                    newElem.DataFine = dateTimePickerResponsabilità.Value;
+                }
+
+                db.Insert(newElem);
+            }
+        }
 
     }
 }

@@ -74,6 +74,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBoxAllocazione = new System.Windows.Forms.GroupBox();
+            this.checkBoxPF = new System.Windows.Forms.CheckBox();
+            this.dateTimePickerResponsabilità = new System.Windows.Forms.DateTimePicker();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -95,6 +97,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.checkBoxPF);
             this.groupBox1.Controls.Add(this.comboBoxRuolo);
             this.groupBox1.Controls.Add(this.LabelRuolo);
             this.groupBox1.Controls.Add(this.LabelCostoFisso);
@@ -592,7 +595,10 @@
             // 
             // groupBoxAllocazione
             // 
+            this.groupBoxAllocazione.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxAllocazione.AutoSize = true;
+            this.groupBoxAllocazione.Controls.Add(this.dateTimePickerResponsabilità);
             this.groupBoxAllocazione.Controls.Add(this.label5);
             this.groupBoxAllocazione.Controls.Add(this.label4);
             this.groupBoxAllocazione.Controls.Add(this.label3);
@@ -601,13 +607,37 @@
             this.groupBoxAllocazione.Controls.Add(this.comboBoxDipendente);
             this.groupBoxAllocazione.Controls.Add(pictureBox1);
             this.groupBoxAllocazione.Controls.Add(this.checkedListBox);
-            this.groupBoxAllocazione.Location = new System.Drawing.Point(7, 0);
+            this.groupBoxAllocazione.Location = new System.Drawing.Point(12, 0);
             this.groupBoxAllocazione.Name = "groupBoxAllocazione";
             this.groupBoxAllocazione.Size = new System.Drawing.Size(781, 270);
             this.groupBoxAllocazione.TabIndex = 9;
             this.groupBoxAllocazione.TabStop = false;
             this.groupBoxAllocazione.Text = "Allocazione dipendente";
             this.groupBoxAllocazione.Visible = false;
+            // 
+            // checkBoxPF
+            // 
+            this.checkBoxPF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxPF.AutoSize = true;
+            this.checkBoxPF.Location = new System.Drawing.Point(462, 17);
+            this.checkBoxPF.Name = "checkBoxPF";
+            this.checkBoxPF.Size = new System.Drawing.Size(109, 20);
+            this.checkBoxPF.TabIndex = 26;
+            this.checkBoxPF.Text = "Persona fisica";
+            this.checkBoxPF.UseVisualStyleBackColor = true;
+            this.checkBoxPF.Visible = false;
+            // 
+            // dateTimePickerResponsabilità
+            // 
+            this.dateTimePickerResponsabilità.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dateTimePickerResponsabilità.CalendarFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerResponsabilità.Enabled = false;
+            this.dateTimePickerResponsabilità.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerResponsabilità.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerResponsabilità.Location = new System.Drawing.Point(325, 109);
+            this.dateTimePickerResponsabilità.Name = "dateTimePickerResponsabilità";
+            this.dateTimePickerResponsabilità.Size = new System.Drawing.Size(128, 22);
+            this.dateTimePickerResponsabilità.TabIndex = 9;
             // 
             // FormInserimentiAmministratore
             // 
@@ -683,5 +713,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxRuolo;
         private System.Windows.Forms.GroupBox groupBoxAllocazione;
+        private System.Windows.Forms.CheckBox checkBoxPF;
+        private System.Windows.Forms.DateTimePicker dateTimePickerResponsabilità;
     }
 }
