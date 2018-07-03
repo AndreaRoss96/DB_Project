@@ -31,6 +31,7 @@
             System.Windows.Forms.PictureBox pictureBox1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInserimentiAmministratore));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBoxPF = new System.Windows.Forms.CheckBox();
             this.comboBoxRuolo = new System.Windows.Forms.ComboBox();
             this.LabelRuolo = new System.Windows.Forms.Label();
             this.LabelCostoFisso = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.LabelDescrizione = new System.Windows.Forms.Label();
             this.checkBoxAzienda = new System.Windows.Forms.CheckBox();
             this.LabelP_IVA = new System.Windows.Forms.Label();
-            this.LabelCodiceFiscale = new System.Windows.Forms.Label();
             this.LabelStipendio = new System.Windows.Forms.Label();
             this.checkBoxImpiegato = new System.Windows.Forms.CheckBox();
             this.textBoxTipo = new System.Windows.Forms.TextBox();
@@ -55,7 +55,7 @@
             this.LabelTipo = new System.Windows.Forms.Label();
             this.LabelCittà = new System.Windows.Forms.Label();
             this.LabelCAP = new System.Windows.Forms.Label();
-            this.LabelCognomeDipendente = new System.Windows.Forms.Label();
+            this.LabelCognome_e_CF = new System.Windows.Forms.Label();
             this.LabelNome = new System.Windows.Forms.Label();
             this.buttonDipendente = new System.Windows.Forms.Button();
             this.buttonRuolo = new System.Windows.Forms.Button();
@@ -74,7 +74,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBoxAllocazione = new System.Windows.Forms.GroupBox();
-            this.checkBoxPF = new System.Windows.Forms.CheckBox();
             this.dateTimePickerResponsabilità = new System.Windows.Forms.DateTimePicker();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
@@ -107,7 +106,6 @@
             this.groupBox1.Controls.Add(this.LabelDescrizione);
             this.groupBox1.Controls.Add(this.checkBoxAzienda);
             this.groupBox1.Controls.Add(this.LabelP_IVA);
-            this.groupBox1.Controls.Add(this.LabelCodiceFiscale);
             this.groupBox1.Controls.Add(this.LabelStipendio);
             this.groupBox1.Controls.Add(this.checkBoxImpiegato);
             this.groupBox1.Controls.Add(this.textBoxTipo);
@@ -122,7 +120,7 @@
             this.groupBox1.Controls.Add(this.LabelTipo);
             this.groupBox1.Controls.Add(this.LabelCittà);
             this.groupBox1.Controls.Add(this.LabelCAP);
-            this.groupBox1.Controls.Add(this.LabelCognomeDipendente);
+            this.groupBox1.Controls.Add(this.LabelCognome_e_CF);
             this.groupBox1.Controls.Add(this.LabelNome);
             this.groupBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 6);
@@ -131,6 +129,18 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Inserimento dei dati";
+            // 
+            // checkBoxPF
+            // 
+            this.checkBoxPF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxPF.AutoSize = true;
+            this.checkBoxPF.Location = new System.Drawing.Point(577, 39);
+            this.checkBoxPF.Name = "checkBoxPF";
+            this.checkBoxPF.Size = new System.Drawing.Size(109, 20);
+            this.checkBoxPF.TabIndex = 26;
+            this.checkBoxPF.Text = "Persona fisica";
+            this.checkBoxPF.UseVisualStyleBackColor = true;
+            this.checkBoxPF.Visible = false;
             // 
             // comboBoxRuolo
             // 
@@ -180,7 +190,7 @@
             this.comboBoxCategoria.Location = new System.Drawing.Point(140, 92);
             this.comboBoxCategoria.Name = "comboBoxCategoria";
             this.comboBoxCategoria.Size = new System.Drawing.Size(234, 24);
-            this.comboBoxCategoria.TabIndex = 2;
+            this.comboBoxCategoria.TabIndex = 9;
             this.comboBoxCategoria.Visible = false;
             // 
             // TextBoxDescrizione
@@ -232,17 +242,6 @@
             this.LabelP_IVA.Text = "Partita IVA";
             this.LabelP_IVA.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.LabelP_IVA.Visible = false;
-            // 
-            // LabelCodiceFiscale
-            // 
-            this.LabelCodiceFiscale.AutoSize = true;
-            this.LabelCodiceFiscale.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelCodiceFiscale.Location = new System.Drawing.Point(7, 62);
-            this.LabelCodiceFiscale.Name = "LabelCodiceFiscale";
-            this.LabelCodiceFiscale.Size = new System.Drawing.Size(100, 17);
-            this.LabelCodiceFiscale.TabIndex = 16;
-            this.LabelCodiceFiscale.Text = "Codice fiscale";
-            this.LabelCodiceFiscale.Visible = false;
             // 
             // LabelStipendio
             // 
@@ -301,7 +300,7 @@
             this.textBoxVia.Location = new System.Drawing.Point(140, 91);
             this.textBoxVia.Name = "textBoxVia";
             this.textBoxVia.Size = new System.Drawing.Size(234, 25);
-            this.textBoxVia.TabIndex = 10;
+            this.textBoxVia.TabIndex = 2;
             this.textBoxVia.Visible = false;
             // 
             // textBoxCittàCosto
@@ -387,16 +386,16 @@
             this.LabelCAP.Text = "CAP";
             this.LabelCAP.Visible = false;
             // 
-            // LabelCognomeDipendente
+            // LabelCognome_e_CF
             // 
-            this.LabelCognomeDipendente.AutoSize = true;
-            this.LabelCognomeDipendente.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelCognomeDipendente.Location = new System.Drawing.Point(6, 59);
-            this.LabelCognomeDipendente.Name = "LabelCognomeDipendente";
-            this.LabelCognomeDipendente.Size = new System.Drawing.Size(72, 17);
-            this.LabelCognomeDipendente.TabIndex = 1;
-            this.LabelCognomeDipendente.Text = "Cognome";
-            this.LabelCognomeDipendente.Visible = false;
+            this.LabelCognome_e_CF.AutoSize = true;
+            this.LabelCognome_e_CF.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelCognome_e_CF.Location = new System.Drawing.Point(6, 59);
+            this.LabelCognome_e_CF.Name = "LabelCognome_e_CF";
+            this.LabelCognome_e_CF.Size = new System.Drawing.Size(72, 17);
+            this.LabelCognome_e_CF.TabIndex = 1;
+            this.LabelCognome_e_CF.Text = "Cognome";
+            this.LabelCognome_e_CF.Visible = false;
             // 
             // LabelNome
             // 
@@ -607,25 +606,13 @@
             this.groupBoxAllocazione.Controls.Add(this.comboBoxDipendente);
             this.groupBoxAllocazione.Controls.Add(pictureBox1);
             this.groupBoxAllocazione.Controls.Add(this.checkedListBox);
-            this.groupBoxAllocazione.Location = new System.Drawing.Point(12, 0);
+            this.groupBoxAllocazione.Location = new System.Drawing.Point(7, 0);
             this.groupBoxAllocazione.Name = "groupBoxAllocazione";
             this.groupBoxAllocazione.Size = new System.Drawing.Size(781, 270);
             this.groupBoxAllocazione.TabIndex = 9;
             this.groupBoxAllocazione.TabStop = false;
             this.groupBoxAllocazione.Text = "Allocazione dipendente";
             this.groupBoxAllocazione.Visible = false;
-            // 
-            // checkBoxPF
-            // 
-            this.checkBoxPF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxPF.AutoSize = true;
-            this.checkBoxPF.Location = new System.Drawing.Point(462, 17);
-            this.checkBoxPF.Name = "checkBoxPF";
-            this.checkBoxPF.Size = new System.Drawing.Size(109, 20);
-            this.checkBoxPF.TabIndex = 26;
-            this.checkBoxPF.Text = "Persona fisica";
-            this.checkBoxPF.UseVisualStyleBackColor = true;
-            this.checkBoxPF.Visible = false;
             // 
             // dateTimePickerResponsabilità
             // 
@@ -685,10 +672,9 @@
         private System.Windows.Forms.Label LabelTipo;
         private System.Windows.Forms.Label LabelCittà;
         private System.Windows.Forms.Label LabelCAP;
-        private System.Windows.Forms.Label LabelCognomeDipendente;
+        private System.Windows.Forms.Label LabelCognome_e_CF;
         private System.Windows.Forms.CheckBox checkBoxAzienda;
         private System.Windows.Forms.Label LabelP_IVA;
-        private System.Windows.Forms.Label LabelCodiceFiscale;
         private System.Windows.Forms.Label LabelCostoFisso;
         private System.Windows.Forms.Label LabelCategoria;
         private System.Windows.Forms.ComboBox comboBoxCategoria;

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LinqToDB;
+using LinqToDB.SqlQuery;
 using MySql.Data.MySqlClient;
 using MySql.Data;
 
@@ -20,7 +21,7 @@ namespace progettoDatabes
         public FormInserimentiAmministratore()
         {
             InitializeComponent();
-            this.execution = " ";
+            this.execution = "Ciao ";
             this.tipo = false;
 
             using (var db = new DataModel.StudioprofessionaleDB())
@@ -32,11 +33,7 @@ namespace progettoDatabes
                 var queryCategoria =
                     (from c in db.Categorias
                      select c);
-
-                var queryRuolo =
-                    (from r in db.Ruoloes
-                     select r);
-
+                
                 foreach (var x in queryCategoria)
                 {
                     comboBoxCategoria.Items.Add(x.CodiceCategoria + " - " + x.Nome);
@@ -45,10 +42,6 @@ namespace progettoDatabes
                 {
                     comboBoxDipendente.Items.Add(x.Matricola + " - " + x.Nome + " " + x.Cognome);
                 }
-                foreach (var x in queryRuolo)
-                {
-                    comboBoxRuolo.Items.Add(x.CodiceRuolo + " - " + x.Nome);
-                }
             }
         }
 
@@ -56,8 +49,7 @@ namespace progettoDatabes
         {
             this.execution = " ";
             LabelNome.Enabled = false;
-            LabelCognomeDipendente.Visible = false;
-            LabelCodiceFiscale.Visible = false;
+            LabelCognome_e_CF.Visible = false;
             LabelVia.Visible = false;
             LabelCategoria.Visible = false;
             LabelCittà.Visible = false;
@@ -122,6 +114,11 @@ namespace progettoDatabes
             textBoxCAP.Visible = true;
             textBoxTipo.Visible = true;
             textBoxTipo.Enabled = false;
+
+            LabelRuolo.Visible = true;
+            comboBoxRuolo.Visible = true;
+            LabelCognome_e_CF.Visible = true;
+            comboBoxRuolo.Items.Clear();
         }
 
         private void initializeGeneric()
@@ -135,16 +132,29 @@ namespace progettoDatabes
 
         private void buttonDipendente_Click(object sender, EventArgs e)
         {
-            this.execution = "Dipendente";
             initializePersonLabels();
-            LabelCognomeDipendente.Visible = true;
+            LabelCognome_e_CF.Visible = true;
             LabelCostoOrario.Visible = true;
             textBoxCostoOrario.Visible = true;
             LabelStipendio.Visible = true;
             LabelStipendio.Enabled = false;
             checkBoxImpiegato.Visible = true;
-            LabelRuolo.Visible = true;
-            comboBoxRuolo.Visible = true;
+
+            LabelRuolo.Text = "Ruolo";
+
+            using (var db = new DataModel.StudioprofessionaleDB())
+            {
+                var queryRuolo =
+                  (from r in db.Ruoloes
+                   select r);
+
+                foreach (var x in queryRuolo)
+                {
+                    comboBoxRuolo.Items.Add(x.CodiceRuolo + " - " + x.Nome);
+                }
+            }
+
+            this.execution = "Dipendente";
         }
 
         private void checkBoxImpiegato_CheckedChanged(object sender, EventArgs e)
@@ -164,12 +174,26 @@ namespace progettoDatabes
 
         private void buttonCliente_Click(object sender, EventArgs e)
         {
-            this.execution = "Cliente";
             initializePersonLabels();
-            LabelCodiceFiscale.Visible = true;
             LabelP_IVA.Visible = true;
             LabelP_IVA.Enabled = false;
             checkBoxAzienda.Visible = true;
+
+            LabelRuolo.Text = "Sede";
+            LabelCognome_e_CF.Text = "Codice fiscale";
+            using (var db = new DataModel.StudioprofessionaleDB())
+            {
+                var queryRuolo =
+                  (from r in db.Sedes
+                   select r);
+
+                foreach (var x in queryRuolo)
+                {
+                    comboBoxRuolo.Items.Add(x.CodiceSede + " - " + x.Nome);
+                }
+            }
+
+            this.execution = "Cliente";
         }
 
         private void checkBoxAzienda_CheckedChanged(object sender, EventArgs e)
@@ -190,43 +214,44 @@ namespace progettoDatabes
 
         private void buttonSede_Click(object sender, EventArgs e)
         {
-            this.execution = "Sede";
             initializePersonLabels();
             textBoxCognomeCF.Visible = false;
             LabelTipo.Visible = false;
             textBoxTipo.Visible = false;
+            LabelRuolo.Visible = false;
+            comboBoxRuolo.Visible = false;
+            this.execution = "Sede";
         }
 
         private void buttonCategoria_Click(object sender, EventArgs e)
         {
-            this.execution = "Categoria";
             initializeGeneric();
+            this.execution = "Categoria";
         }
 
         private void buttonSottCategoria_Click(object sender, EventArgs e)
         {
-            this.execution = "SottoCategoria";
             initializeGeneric();
             LabelCostoFisso.Visible = true;
             textBoxCittàCosto.Visible = true;
-            checkBoxAzienda.Visible = false;
-            checkBoxPF.Visible = false;
+            checkBoxAzienda.Visible = true;
+            checkBoxPF.Visible = true;
 
             LabelCategoria.Visible = true;
             comboBoxCategoria.Visible = true;
+            this.execution = "SottoCategoria";
         }
 
         private void buttonRuolo_Click(object sender, EventArgs e)
         {
-            this.execution = "Ruolo";
             initializeLabels();
             LabelNome.Enabled = true;
             textBoxNome.Enabled = true;
+            this.execution = "Ruolo";
         }
 
         private void buttonAllocazione_Click(object sender, EventArgs e)
         {
-            this.execution = "Allocazione";
             initializeLabels();
             groupBoxAllocazione.Visible = true;
             label2.Visible = true;
@@ -244,11 +269,11 @@ namespace progettoDatabes
                     checkedListBox.Items.Add(x.CodiceSede + " - " + x.Nome + " " + x.Via + " " + x.Citta + " " + x.CAP);
                 }
             }
+            this.execution = "Allocazione";
         }
 
         private void buttonResponsabilità_Click(object sender, EventArgs e)
         {
-            this.execution = "Responsabilità";
             initializeLabels();
             dateTimePickerResponsabilità.Enabled = true;
             groupBoxAllocazione.Visible = true;
@@ -271,6 +296,7 @@ namespace progettoDatabes
                     checkedListBox.Items.Add(x.Nominativo + " - " + x.CodiceFiscale);
                 }
             }
+            this.execution = "Responsabilità";
         }
 
         private void buttonEsegui_Click(object sender, EventArgs e)
@@ -290,7 +316,7 @@ namespace progettoDatabes
                     insertCategoria();
                     break;
                 case "SottoCategoria":
-                    insertCategoria();
+                    insertSottoCategoria();
                     break;
                 case "Ruolo":
                     insertRuolo();
@@ -310,22 +336,30 @@ namespace progettoDatabes
         {
             using (var db = new DataModel.StudioprofessionaleDB())
             {
-                DataModel.Dipendente newElem = new DataModel.Dipendente();
-                newElem.Nome = textBoxNome.Text;
-                newElem.Cognome = textBoxCognomeCF.Text;
-                newElem.Via = textBoxVia.Text;
-                newElem.Citta = textBoxCittàCosto.Text;
-                newElem.CAP = textBoxCAP.Text;
-                newElem.CostoOrario = Int32.Parse(textBoxCostoOrario.Text);
-                newElem.CodiceRuolo = 33;//Int32.Parse(comboBoxRuolo.Text.TrimEnd(new char[] { '-', ' ' }));
-                newElem.Tipo = 'c';
-                if (tipo)
+                try
                 {
-                    newElem.Tipo = 'i';
-                    newElem.Stipendio = Int32.Parse(textBoxTipo.Text);
+                    DataModel.Dipendente newElem = new DataModel.Dipendente();
+                    newElem.Matricola = 5;
+                    newElem.Nome = textBoxNome.Text;
+                    newElem.Cognome = textBoxCognomeCF.Text;
+                    newElem.Via = textBoxVia.Text;
+                    newElem.Citta = textBoxCittàCosto.Text;
+                    newElem.CAP = textBoxCAP.Text;
+                    newElem.CostoOrario = Int32.Parse(textBoxCostoOrario.Text);
+                    newElem.CodiceRuolo = Int32.Parse(comboBoxRuolo.Text.Split('-')[0].ToString());
+                    newElem.Tipo = 'c';
+                    if (tipo)
+                    {
+                        newElem.Tipo = 'i';
+                        newElem.Stipendio = Int32.Parse(textBoxTipo.Text);
+                    }
+                    db.Insert(newElem);
                 }
-
-                db.Insert(newElem);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
             }
         }
 
@@ -339,6 +373,7 @@ namespace progettoDatabes
                 newElem.Via = textBoxVia.Text;
                 newElem.Citta = textBoxCittàCosto.Text;
                 newElem.CAP = textBoxCAP.Text;
+                newElem.CodiceSede = Int32.Parse(comboBoxRuolo.Text.Split('-')[0].ToString());
                 newElem.Tipo = 'p';
                 if (tipo)
                 {
@@ -383,7 +418,8 @@ namespace progettoDatabes
                 DataModel.Sottocategoria newElem = new DataModel.Sottocategoria();
                 newElem.Nome = textBoxNome.Text;
                 newElem.Descrizione = TextBoxDescrizione.Text;
-                newElem.CodiceCategoria = Int32.Parse(comboBoxCategoria.Text.TrimEnd(new char[] {' ', '-'}));
+                newElem.CodiceCategoria = Int32.Parse(comboBoxCategoria.Text.Split('-')[0].ToString());
+                newElem.CostoFissoPerCliente = Int32.Parse(textBoxCittàCosto.Text);
                 newElem.TipoAZ = checkBoxAzienda.Checked;
                 newElem.TipoPF = checkBoxPF.Checked;
               
@@ -407,16 +443,21 @@ namespace progettoDatabes
         {
             using (var db = new DataModel.StudioprofessionaleDB())
             {
-                /*da rivedere*/
                 DataModel.Allocazione newElem = new DataModel.Allocazione();
                 foreach (var c in checkedListBox.CheckedItems)
                 {
                     var s = c.ToString();
-                    newElem.Matricola = Int32.Parse(comboBoxDipendente.Text.TrimEnd(new char[] { ' ', '-' }));
-                    newElem.CodiceSede = Int32.Parse(s.TrimEnd(new char[] { ' ', '-' }));
+                    newElem.Matricola = Int32.Parse(comboBoxDipendente.Text.Split('-')[0].ToString());
+                    newElem.CodiceSede = Int32.Parse(s.Split('-')[0].ToString());
+                    try
+                    {
+                        db.Insert(newElem);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("allocazione già presente!");
+                    };
                 }
-                
-                db.Insert(newElem);
             }
         }
 
@@ -424,19 +465,24 @@ namespace progettoDatabes
         {
             using (var db = new DataModel.StudioprofessionaleDB())
             {
-                /*da rivedere*/
                 DataModel.Responsabile newElem = new DataModel.Responsabile();
+
                 foreach (var c in checkedListBox.CheckedItems)
                 {
                     var s = c.ToString();
-                    newElem.CodiceFiscale = s.TrimEnd(new char[] { ' ', '-' });
-                    newElem.Matricola = Int32.Parse(comboBoxDipendente.Text.TrimEnd(new char[] { ' ', '-' }));
-                    newElem.DataFine = dateTimePickerResponsabilità.Value;
+                    newElem.CodiceFiscale = s.Split('-')[1].ToString().Trim(' ');
+                    newElem.Matricola = Int32.Parse(comboBoxDipendente.Text.Split('-')[0].ToString());
+                    newElem.DataInizio = dateTimePickerResponsabilità.Value;
+                    try
+                    {
+                        db.Insert(newElem);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("La responsabilità non è corretta!");
+                    };
                 }
-
-                db.Insert(newElem);
             }
         }
-
     }
 }
