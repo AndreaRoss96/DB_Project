@@ -39,7 +39,7 @@
 	NamespaceName = "DataModel";
 
 	LoadMySqlMetadata("localhost", "studioprofessionale", "root", "");
-//	LoadMySqlMetadata(string connectionString);
+	//LoadMySqlMetadata(");
 
 	GenerateModel();
 #>

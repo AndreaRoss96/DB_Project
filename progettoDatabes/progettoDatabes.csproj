@@ -64,10 +64,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataModel\studioprofessionale1.generated.cs">
+    <Compile Include="DataModel\schemaprofessionale.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>studioprofessionale.tt</DependentUpon>
+      <DependentUpon>schemaprofessionale.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -75,11 +75,19 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
+=======
+    <Compile Include="FormInserimentiAmministratore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInserimentiAmministratore.Designer.cs">
+      <DependentUpon>FormInserimentiAmministratore.cs</DependentUpon>
+>>>>>>> a04ac0702f82a0e86da7a6295927bbd4e4f28ae8
     </Compile>
     <Compile Include="FormPerDipendente.cs">
       <SubType>Form</SubType>
@@ -92,8 +100,13 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="FormInserimentiAmministratore.resx">
+      <DependentUpon>FormInserimentiAmministratore.cs</DependentUpon>
+>>>>>>> a04ac0702f82a0e86da7a6295927bbd4e4f28ae8
     </EmbeddedResource>
     <EmbeddedResource Include="FormPerDipendente.resx">
       <DependentUpon>FormPerDipendente.cs</DependentUpon>
@@ -137,9 +150,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataModel\studioprofessionale.tt">
+    <Content Include="DataModel\schemaprofessionale.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>studioprofessionale1.generated.cs</LastGenOutput>
+      <LastGenOutput>schemaprofessionale.generated.cs</LastGenOutput>
     </Content>
     <Content Include="LinqToDB.Templates\CopyMe.MySql.tt.txt" />
   </ItemGroup>
