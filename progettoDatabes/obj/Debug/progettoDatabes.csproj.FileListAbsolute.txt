@@ -13,3 +13,4 @@ D:\applicazionedatabes\progettoDatabes\obj\Debug\progettoDatabes.Properties.Reso
 D:\applicazionedatabes\progettoDatabes\obj\Debug\progettoDatabes.csproj.GenerateResource.Cache
 D:\applicazionedatabes\progettoDatabes\obj\Debug\progettoDatabes.exe
 D:\applicazionedatabes\progettoDatabes\obj\Debug\progettoDatabes.pdb
+D:\applicazionedatabes\progettoDatabes\obj\Debug\progettoDatabes.Form2.resources

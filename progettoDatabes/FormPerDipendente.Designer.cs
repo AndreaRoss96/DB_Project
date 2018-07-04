@@ -107,9 +107,10 @@
             this.comboboxOperazioni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboboxOperazioni.FormattingEnabled = true;
             this.comboboxOperazioni.Items.AddRange(new object[] {
-            "1 - elenco di prestazioni e fasi per ogni cliente (op 2)",
-            "2 - resosconto di una prestazione (op3)",
-            "3 - elenco di prestazioni per un cliente (op 20)"});
+            "Visualizzare tutte le prestazioni e le relative fasi fatte da questo dipendente e" +
+                "d info sul cliente",
+            "Visualizzazione compensi e dettagli di una certa pratica",
+            "Visualizzare le prestazioni per un cliente eseguite da questo dipendente"});
             this.comboboxOperazioni.Location = new System.Drawing.Point(19, 246);
             this.comboboxOperazioni.Name = "comboboxOperazioni";
             this.comboboxOperazioni.Size = new System.Drawing.Size(394, 24);
@@ -160,6 +161,7 @@
             this.Controls.Add(this.groupboxDipendente);
             this.Name = "FormPerDipendente";
             this.Text = "FormPerDipendente";
+            this.Load += new System.EventHandler(this.FormPerDipendente_Load);
             this.groupboxDipendente.ResumeLayout(false);
             this.groupboxDipendente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
