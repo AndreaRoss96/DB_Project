@@ -254,10 +254,8 @@ namespace progettoDatabes
         {
             initializeLabels();
             groupBoxAllocazione.Visible = true;
-            label2.Visible = true;
-            label3.Visible = true;
-            label4.Visible = false;
-            label5.Visible = false;
+            groupBoxAllocazione.Text = "Allocazione dipendente";
+            label2.Text = "Seleziona un dipendente ed una o più sedi\rdove verrà allocato.";
 
             using (var db = new DataModel.StudioprofessionaleDB())
             {
@@ -277,19 +275,26 @@ namespace progettoDatabes
             initializeLabels();
             dateTimePickerResponsabilità.Enabled = true;
             groupBoxAllocazione.Visible = true;
-            label4.Visible = true;
-            label5.Visible = true;
-            label2.Visible = false;
-            label3.Visible = false;
+            groupBoxAllocazione.Text = "Responsabilità dipendente";
+            label2.Text = "Seleziona un dipendente ed uno o più clienti\rdei quali sarà responsabile.";
 
             using (var db = new DataModel.StudioprofessionaleDB())
             {
                 var queryResponsabilità =
                     (from c in db.Clientes
-                    where !(from r in db.Responsabiles
-                            where r.CodiceFiscale == c.CodiceFiscale
-                            select c.CodiceFiscale).Contains(c.CodiceFiscale)
-                    select c);
+                     from r in db.Responsabiles
+                     where r.CodiceFiscale == c.CodiceFiscale
+                     && r.DataFine == null
+                     || !(from r1 in db.Responsabiles
+                          where r1.CodiceFiscale == c.CodiceFiscale
+                          select r1.CodiceFiscale).Contains(c.CodiceFiscale)
+                     group c by new { c.CodiceFiscale, c.Nominativo } into g
+                     select new
+                     {
+                         g.Key.CodiceFiscale,
+                         g.Key.Nominativo
+                     });
+                     
 
                 foreach (var x in queryResponsabilità)
                 {
@@ -326,6 +331,9 @@ namespace progettoDatabes
                     break;
                 case "Responsabilità":
                     insertResponsabilita();
+                    break;
+                case " ":
+                    MessageBox.Show("Scegli un'operazione da eseguire.");
                     break;
             }
             initializeLabels();
@@ -499,13 +507,20 @@ namespace progettoDatabes
             using (var db = new DataModel.StudioprofessionaleDB())
             {
                 DataModel.Responsabile newElem = new DataModel.Responsabile();
+                String codFiscale;
 
                 try
                 {
                     foreach (var c in checkedListBox.CheckedItems)
                     {
-                        var s = c.ToString();
-                        newElem.CodiceFiscale = s.Split('-')[1].ToString().Trim(' ');
+                        codFiscale = c.ToString().Split('-')[1].ToString().Trim(' ');
+
+                        db.Responsabiles
+                            .Where(r => r.CodiceFiscale == codFiscale)
+                            .Set(p => p.DataFine, dateTimePickerResponsabilità.Value)
+                            .Update();
+
+                        newElem.CodiceFiscale = codFiscale;
                         newElem.Matricola = Int32.Parse(comboBoxDipendente.Text.Split('-')[0].ToString());
                         newElem.DataInizio = dateTimePickerResponsabilità.Value;
 

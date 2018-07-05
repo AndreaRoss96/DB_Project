@@ -70,9 +70,6 @@
             this.comboBoxDipendente = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBoxAllocazione = new System.Windows.Forms.GroupBox();
             this.dateTimePickerResponsabilità = new System.Windows.Forms.DateTimePicker();
             pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -557,40 +554,6 @@
             this.label2.Size = new System.Drawing.Size(253, 16);
             this.label2.TabIndex = 5;
             this.label2.Text = "Seleziona un dipendente ed una o più sedi";
-            this.label2.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 136);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "dove allorcarlo ";
-            this.label3.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(6, 123);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(263, 16);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Seleziona un dipendente ed uno o più clienti";
-            this.label4.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 139);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(162, 16);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "dei quali sarà responsabile";
-            this.label5.Visible = false;
             // 
             // groupBoxAllocazione
             // 
@@ -598,9 +561,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxAllocazione.AutoSize = true;
             this.groupBoxAllocazione.Controls.Add(this.dateTimePickerResponsabilità);
-            this.groupBoxAllocazione.Controls.Add(this.label5);
-            this.groupBoxAllocazione.Controls.Add(this.label4);
-            this.groupBoxAllocazione.Controls.Add(this.label3);
             this.groupBoxAllocazione.Controls.Add(this.label2);
             this.groupBoxAllocazione.Controls.Add(this.label1);
             this.groupBoxAllocazione.Controls.Add(this.comboBoxDipendente);
@@ -611,7 +571,6 @@
             this.groupBoxAllocazione.Size = new System.Drawing.Size(781, 270);
             this.groupBoxAllocazione.TabIndex = 9;
             this.groupBoxAllocazione.TabStop = false;
-            this.groupBoxAllocazione.Text = "Allocazione dipendente";
             this.groupBoxAllocazione.Visible = false;
             // 
             // dateTimePickerResponsabilità
@@ -694,9 +653,6 @@
         private System.Windows.Forms.ComboBox comboBoxDipendente;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxRuolo;
         private System.Windows.Forms.GroupBox groupBoxAllocazione;
         private System.Windows.Forms.CheckBox checkBoxPF;

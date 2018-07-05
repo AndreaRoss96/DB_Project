@@ -120,7 +120,7 @@ namespace progettoDatabes
                              f.Descrizione
 
                          });
-                    MessageBox.Show(query.Count().ToString());
+                
                     dataGridView1.DataSource = query.ToList();
                 }
             }
@@ -128,18 +128,20 @@ namespace progettoDatabes
             {
                 //query 3
                 using (var db = new DataModel.StudioprofessionaleDB())
-                {    
+                {
                     var query =
                         (from p in db.Prestaziones
+                         join s in db.Sottocategorias on p.CodiceSottocategoria equals s.CodiceSottocategoria
                          where p.CodicePratica == codicePratica
                          where p.CodiceFiscale == codiceCliente
                          select new
                          {
-                            p.CodiceFiscale,
-                            p.CodicePrestazione,
-                            p.Compenso,
-                            p.Pagata,
-                            p.Terminata
+                             p.CodiceFiscale,
+                             p.CodicePrestazione,
+                             p.Compenso,
+                             CompensoTotale = p.Compenso + s.CostoFissoPerCliente,
+                             p.Pagata,
+                             p.Terminata
 
                          });
                     dataGridView1.DataSource = query.ToList();
@@ -155,6 +157,7 @@ namespace progettoDatabes
                         (from f in db.Fases
                          join pa in db.Praticas on new { f.CodiceFiscale, f.CodicePratica } equals new { pa.CodiceFiscale, pa.CodicePratica }
                          join pe in db.Prestaziones on new { f.CodiceFiscale, f.CodicePratica, f.CodicePrestazione } equals new { pe.CodiceFiscale, pe.CodicePratica, pe.CodicePrestazione }
+                         join s in db.Sottocategorias on pe.CodiceSottocategoria equals s.CodiceSottocategoria
                          //  join pe in db.Prestaziones on f.CodiceFiscale equals pe.CodiceFiscale 
                          //   join pa in db.Praticas on pe.CodicePratica equals pa.CodicePratica
                      where f.Matricola == 3
@@ -169,6 +172,7 @@ namespace progettoDatabes
                              pe.CodicePrestazione,
                              pe.CodiceSottocategoria,
                              pe.Compenso,
+                             CompensoTotale=pe.Compenso+s.CostoFissoPerCliente,
                              pe.Durata,
                              pe.Pagata,
                              pe.Terminata
@@ -179,6 +183,11 @@ namespace progettoDatabes
         }
 
         private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormPerDipendente_Load(object sender, EventArgs e)
         {
 
         }
