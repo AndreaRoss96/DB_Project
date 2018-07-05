@@ -412,6 +412,41 @@ namespace progettoDatabes
                     }
                 }
             }
+            else if (comboBox.SelectedIndex == 10)
+            {
+                //query 16
+                using (var db = new DataModel.StudioprofessionaleDB())
+                {/*
+                    Visualizzare i dipendenti e le relative responsabilità nel tempo,visualizzando anche chi non le ha mai avute
+                    select d.matricola,d.nome,d.cognome,d.tipo,cliente.codiceFiscale,cliente.nominativo,responsabile.dataInizio,responsabile.dataFine from Dipendente d
+left join responsabile on d.matricola = responsabile.matricola
+left join cliente on responsabile.codiceFiscale = cliente.codiceFiscale
+group by d.matricola,d.nome,d.cognome,d.tipo,cliente.codiceFiscale,cliente.nominativo,responsabile.dataInizio,responsabile.dataFine
+order by d.matricola,responsabile.dataInizio desc*/
+                    var query = (
+                        from d in db.Dipendentes
+                        join r in db.Responsabiles on d.Matricola equals r.Matricola into j1
+                        from r in j1.DefaultIfEmpty()
+                        join c in db.Clientes on r.CodiceFiscale equals c.CodiceFiscale into j2
+                        from c in j2.DefaultIfEmpty()
+                        group c by new { d.Matricola, d.Nome, d.Cognome, d.Tipo, c.CodiceFiscale, c.Nominativo, r.DataInizio, r.DataFine } into g
+                        orderby g.Key.Matricola ascending, g.Key.DataInizio descending
+                        select new
+                        {
+                            g.Key.Matricola,
+                            g.Key.Nome,
+                            g.Key.Cognome,
+                            g.Key.Tipo,
+                            g.Key.CodiceFiscale,
+                            g.Key.Nominativo,
+                            g.Key.DataInizio,
+                            g.Key.DataFine
+                        }
+                        );
+                    dataGridView1.DataSource = query.ToList();
+
+                }
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -468,5 +503,7 @@ namespace progettoDatabes
             dateTimePickerInizio.Enabled = false;
             dateTimePickerFine.Enabled = false;
         }
+
+      
     }
 }

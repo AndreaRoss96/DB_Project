@@ -21,7 +21,7 @@ namespace progettoDatabes
            // Application.Run(new FormPerDipendente());
           //  Application.Run(new Form1());
 
-            //Application.Run(new FormInserimentiAmministratore());
+            //Application.Run(new FormInserimentiAmministratore())
         }
     }
 }
