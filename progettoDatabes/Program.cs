@@ -16,14 +16,12 @@ namespace progettoDatabes
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-            Application.Run(new Form2());
+
+            Application.Run(new Form1());
            // Application.Run(new FormPerDipendente());
           //  Application.Run(new Form1());
-=======
 
-            Application.Run(new FormInserimentiAmministratore());
->>>>>>> a04ac0702f82a0e86da7a6295927bbd4e4f28ae8
+            //Application.Run(new FormInserimentiAmministratore());
         }
     }
 }

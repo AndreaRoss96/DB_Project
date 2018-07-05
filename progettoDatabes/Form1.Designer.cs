@@ -225,6 +225,7 @@
             this.button4.TabIndex = 13;
             this.button4.Text = "inserisci";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // lblCategoria
             // 
@@ -274,7 +275,7 @@
             this.textBoxDurata.Size = new System.Drawing.Size(100, 25);
             this.textBoxDurata.TabIndex = 7;
             this.textBoxDurata.TabStop = false;
-            this.textBoxDurata.Text = "00:00:00";
+            this.textBoxDurata.Text = "00:00";
             // 
             // lblStato
             // 
@@ -389,6 +390,7 @@
             this.button6.TabIndex = 19;
             this.button6.Text = "inserisci";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // textBoxDescrizioneFase
             // 

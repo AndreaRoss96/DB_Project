@@ -16,7 +16,6 @@ D:\applicazionedatabes\progettoDatabes\obj\Debug\progettoDatabes.pdb
 <<<<<<< HEAD
 D:\applicazionedatabes\progettoDatabes\obj\Debug\progettoDatabes.Form2.resources
 =======
-<<<<<<< HEAD
 C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\bin\Debug\progettoDatabes.exe.config
 C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\bin\Debug\progettoDatabes.exe
 C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\bin\Debug\progettoDatabes.pdb
@@ -34,7 +33,6 @@ C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debu
 C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.csproj.CopyComplete
 C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.exe
 C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.pdb
-=======
 C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.csprojAssemblyReference.cache
 C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.Form1.resources
 C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.FormInserimentiAmministratore.resources
@@ -55,3 +53,5 @@ C:\Users\admin\Desktop\progetto databes\progettoDatabes\bin\Debug\MySql.Data.xml
 C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.csproj.CopyComplete
 >>>>>>> a6918ca2a82754671076a1a588f146ddf0b46bb0
 >>>>>>> a04ac0702f82a0e86da7a6295927bbd4e4f28ae8
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.Form2.resources
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.FormInserimentiAmministratore.resources
