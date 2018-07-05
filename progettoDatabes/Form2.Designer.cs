@@ -58,6 +58,9 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(368, -13);
             this.dataGridView1.Name = "dataGridView1";
@@ -80,7 +83,7 @@
             this.groupBox1.Controls.Add(this.comboBoxSede);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(333, 230);
+            this.groupBox1.Size = new System.Drawing.Size(333, 220);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Azioni disponibili";
@@ -262,8 +265,10 @@
                 "lle prestazioni",
             "Visualizzare i dipendenti e le relative allocazioni",
             "Visualizzare l\'elenco dei clienti di una certa tipologia",
-            "Visualizzare stipendi,se si sceglie collaboratore selezionare anche il periodo"});
-            this.comboBox.Location = new System.Drawing.Point(12, 261);
+            "Visualizzare stipendi,se si sceglie collaboratore selezionare anche il periodo",
+            "Visualizzare i dipendenti e le relative responsabilità nel tempo,visualizzando an" +
+                "che chi non le ha mai avute"});
+            this.comboBox.Location = new System.Drawing.Point(12, 251);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(314, 21);
             this.comboBox.TabIndex = 3;
@@ -272,7 +277,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 245);
+            this.label1.Location = new System.Drawing.Point(9, 235);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 13);
             this.label1.TabIndex = 4;
@@ -282,7 +287,7 @@
             // buttonOperazione
             // 
             this.buttonOperazione.Enabled = false;
-            this.buttonOperazione.Location = new System.Drawing.Point(12, 288);
+            this.buttonOperazione.Location = new System.Drawing.Point(12, 278);
             this.buttonOperazione.Name = "buttonOperazione";
             this.buttonOperazione.Size = new System.Drawing.Size(150, 23);
             this.buttonOperazione.TabIndex = 5;
