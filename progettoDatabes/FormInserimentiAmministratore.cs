@@ -18,8 +18,10 @@ namespace progettoDatabes
     {
         private string execution;
         private bool tipo;
-        public FormInserimentiAmministratore()
+        private Form1 mainForm = null;
+        public FormInserimentiAmministratore(Form1 callingForm)
         {
+            mainForm = callingForm;
             InitializeComponent();
             this.execution = "Ciao ";
             this.tipo = false;
@@ -531,6 +533,16 @@ namespace progettoDatabes
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void FormInserimentiAmministratore_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            mainForm.Visible = true;
+        }
+
+        private void FormInserimentiAmministratore_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -123,7 +123,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(513, 13);
+            this.dataGridView1.Location = new System.Drawing.Point(501, 13);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(514, 299);
             this.dataGridView1.TabIndex = 5;
@@ -161,6 +161,7 @@
             this.Controls.Add(this.groupboxDipendente);
             this.Name = "FormPerDipendente";
             this.Text = "FormPerDipendente";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPerDipendente_FormClosing);
             this.Load += new System.EventHandler(this.FormPerDipendente_Load);
             this.groupboxDipendente.ResumeLayout(false);
             this.groupboxDipendente.PerformLayout();

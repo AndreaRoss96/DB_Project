@@ -22,8 +22,10 @@ namespace progettoDatabes
         char tipoDipendente;
         DateTime inizio=DateTime.Now;
         DateTime fine=DateTime.Now;
-        public Form2()
+        private Form1 mainForm = null;
+        public Form2(Form1 callingForm)
         {
+            mainForm = callingForm;
             InitializeComponent();
             disabilitaTutto();
             using (var db = new DataModel.StudioprofessionaleDB())
@@ -504,6 +506,15 @@ order by d.matricola,responsabile.dataInizio desc*/
             dateTimePickerFine.Enabled = false;
         }
 
-      
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            mainForm.Visible = true;
+            
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
