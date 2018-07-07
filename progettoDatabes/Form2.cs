@@ -17,6 +17,8 @@ namespace progettoDatabes
     {
         string cs = @"server=localhost;userid=root;
                      password=;database=studioprofessionale";
+        bool pagata = false;
+        bool terminata = false;
         int codiceSede = -1;
         string codiceFiscale = null;
         char tipoDipendente;
@@ -91,6 +93,12 @@ namespace progettoDatabes
                 case 11:
                     disabilitaTutto();
                     comboBoxCliente.Enabled = true;
+                break;
+                case 12:
+                    disabilitaTutto();
+                    comboBoxCliente.Enabled = true;
+                    checkBoxTerminata.Enabled = true;
+                    checkBoxPagata.Enabled = true;
                 break;
                 default:
                     disabilitaTutto();
@@ -479,11 +487,41 @@ namespace progettoDatabes
 
                 }
             }
+            else if (comboBox.SelectedIndex == 12)
+            {
+                using (var db = new DataModel.StudioprofessionaleDB())
+                {
+                    var query = (
+                        from c in db.Clientes
+                        join pa in db.Praticas on c.CodiceFiscale equals pa.CodiceFiscale
+                        join pe in db.Prestaziones on new { pa.CodiceFiscale, pa.CodicePratica } equals new { pe.CodiceFiscale, pe.CodicePratica }
+                        where c.CodiceFiscale == codiceFiscale
+                        where pe.Pagata == pagata
+                        where pe.Terminata == terminata
+                        orderby new { c.CodiceFiscale, pa.CodicePratica, pe.CodicePrestazione }
+                        select new
+                        {
+                            c.CodiceFiscale,
+                            c.Nominativo,
+                            c.Tipo,
+                            c.PartitaIVA,
+                            pa.CodicePratica,
+                            pa.Nome,
+                            pe.CodicePrestazione,
+                            CompensoPrestazione = pe.Compenso,
+                            pe.Pagata,
+                            pe.Terminata
+                        }
+                        );
+                    dataGridView1.DataSource = query.ToList();
+
+                }
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-            //query 1
+          
         }
 
      
@@ -522,6 +560,8 @@ namespace progettoDatabes
             radioButtonCollaboratore.Enabled = false;
             dateTimePickerInizio.Enabled = false;
             dateTimePickerFine.Enabled = false;
+            checkBoxPagata.Enabled = false;
+            checkBoxTerminata.Enabled = false;
         }
 
         private void radioButtonCollaboratore_CheckedChanged(object sender, EventArgs e)
@@ -545,6 +585,35 @@ namespace progettoDatabes
         private void Form2_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxPagata_CheckedChanged(object sender, EventArgs e)
+        {
+            if(pagata == false)
+            {
+                pagata = true;
+            }
+            else
+            {
+                pagata = false;
+            }
+        }
+
+        private void checkBoxTerminata_CheckedChanged(object sender, EventArgs e)
+        {
+            if (terminata == false)
+            {
+                terminata = true;
+            }
+            else
+            {
+                terminata = false;
+            }
         }
     }
 }
