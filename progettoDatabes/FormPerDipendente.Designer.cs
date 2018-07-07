@@ -109,7 +109,7 @@
             this.comboboxOperazioni.Items.AddRange(new object[] {
             "Visualizzare tutte le prestazioni e le relative fasi fatte da questo dipendente e" +
                 "d info sul cliente",
-            "Visualizzazione compensi e dettagli di una certa pratica",
+            "Visualizzare compensi e dettagli di una certa pratica",
             "Visualizzare le prestazioni per un cliente eseguite da questo dipendente"});
             this.comboboxOperazioni.Location = new System.Drawing.Point(19, 246);
             this.comboboxOperazioni.Name = "comboboxOperazioni";

@@ -58,8 +58,11 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(368, 1);
             this.dataGridView1.Name = "dataGridView1";
@@ -254,17 +257,18 @@
             // 
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
-            "Visualizza per ogni sede le città dei relativi clienti",
+            "Visualizzare per ogni sede le città dei relativi clienti",
             "Visualizzare per una certa sede i dipendendenti ed il relativo ruolo",
             "Visualizzare per ogni sede i relativi costi struttura",
             "Visualizzare per ogni cliente il relativo storico dei responsabili",
-            "Visualizzazione dei 5 dipendenti che hanno fatto meno fasi",
-            "Visualizzazione del totale delle ore dedicate ad un cliente",
-            "Visualizzare prestazioni per ogni cliente la cui durata supera la durata media de" +
-                "lle prestazioni",
+            "Visualizzare i 5 dipendenti che hanno fatto meno fasi",
+            "Visualizzare il totale delle ore dedicate ad un cliente",
+            "Visualizzare le prestazioni per ogni cliente la cui durata supera la durata media" +
+                " delle prestazioni",
             "Visualizzare i dipendenti e le relative allocazioni",
             "Visualizzare l\'elenco dei clienti di una certa tipologia",
-            "Visualizzare stipendi,se si sceglie collaboratore selezionare anche il periodo",
+            "Visualizzare gli stipendi,se si sceglie collaboratore selezionare anche il period" +
+                "o",
             "Visualizzare i dipendenti e le relative responsabilità nel tempo,visualizzando an" +
                 "che chi non le ha mai avute"});
             this.comboBox.Location = new System.Drawing.Point(12, 251);
