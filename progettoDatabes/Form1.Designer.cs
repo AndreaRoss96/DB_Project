@@ -69,6 +69,7 @@
             this.amministratoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inserimentiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.interrogazioniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inserisciCostiStrutturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -196,7 +197,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(604, 630);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-           // this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView1_UserDeletingRow);
             // 
             // groupBox2
             // 
@@ -488,6 +488,8 @@
             // 
             // dipendenteToolStripMenuItem
             // 
+            this.dipendenteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inserisciCostiStrutturaToolStripMenuItem});
             this.dipendenteToolStripMenuItem.Name = "dipendenteToolStripMenuItem";
             this.dipendenteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dipendenteToolStripMenuItem.Text = "Dipendente";
@@ -505,16 +507,23 @@
             // inserimentiToolStripMenuItem
             // 
             this.inserimentiToolStripMenuItem.Name = "inserimentiToolStripMenuItem";
-            this.inserimentiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.inserimentiToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.inserimentiToolStripMenuItem.Text = "Inserimenti";
             this.inserimentiToolStripMenuItem.Click += new System.EventHandler(this.inserimentiToolStripMenuItem_Click);
             // 
             // interrogazioniToolStripMenuItem
             // 
             this.interrogazioniToolStripMenuItem.Name = "interrogazioniToolStripMenuItem";
-            this.interrogazioniToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.interrogazioniToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.interrogazioniToolStripMenuItem.Text = "Interrogazioni";
             this.interrogazioniToolStripMenuItem.Click += new System.EventHandler(this.interrogazioniToolStripMenuItem_Click);
+            // 
+            // inserisciCostiStrutturaToolStripMenuItem
+            // 
+            this.inserisciCostiStrutturaToolStripMenuItem.Name = "inserisciCostiStrutturaToolStripMenuItem";
+            this.inserisciCostiStrutturaToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.inserisciCostiStrutturaToolStripMenuItem.Text = "Inserisci costi struttura";
+            this.inserisciCostiStrutturaToolStripMenuItem.Click += new System.EventHandler(this.inserisciCostiStrutturaToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -589,6 +598,7 @@
         private System.Windows.Forms.ToolStripMenuItem amministratoreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inserimentiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem interrogazioniToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inserisciCostiStrutturaToolStripMenuItem;
     }
 }
 

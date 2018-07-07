@@ -426,5 +426,14 @@ namespace progettoDatabes
                 fInterrogazioni.ShowDialog(this);
             }
         }
+
+        private void inserisciCostiStrutturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            using (costiStruttura fInterrogazioni = new costiStruttura(this,matricola))
+            {
+                fInterrogazioni.ShowDialog(this);
+            }
+        }
     }
 }
