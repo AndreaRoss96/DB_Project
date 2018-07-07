@@ -603,6 +603,8 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FormInserimentiAmministratore";
             this.Text = "FormInserimentiAmministratore";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormInserimentiAmministratore_FormClosing);
+            this.Load += new System.EventHandler(this.FormInserimentiAmministratore_Load);
             ((System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

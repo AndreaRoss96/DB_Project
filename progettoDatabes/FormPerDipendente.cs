@@ -18,8 +18,10 @@ namespace progettoDatabes
         List<Tuple<String, String>> listCliente = new List<Tuple<String, String>>();
         string codiceCliente = null;
         int codicePratica=-1;
-        public FormPerDipendente()
+        private Form1 mainForm = null;
+        public FormPerDipendente(Form1 callingForm)
         {
+            mainForm = callingForm;
             InitializeComponent();
             using (var db = new DataModel.StudioprofessionaleDB())
             {
@@ -190,6 +192,11 @@ namespace progettoDatabes
         private void FormPerDipendente_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormPerDipendente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            mainForm.Visible = true;
         }
     }
 }

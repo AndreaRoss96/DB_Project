@@ -63,11 +63,19 @@
             this.lblOraFine = new System.Windows.Forms.Label();
             this.lblOraInizio = new System.Windows.Forms.Label();
             this.lblStep = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.operazioniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dipendenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amministratoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inserimentiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.interrogazioniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inserisciCostiStrutturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCompenso)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboboxClienteNominativo
@@ -77,10 +85,6 @@
             this.comboboxClienteNominativo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboboxClienteNominativo.FormattingEnabled = true;
             this.comboboxClienteNominativo.IntegralHeight = false;
-            this.comboboxClienteNominativo.Items.AddRange(new object[] {
-            "Lorem ipsum",
-            "Bambatek",
-            "diocane"});
             this.comboboxClienteNominativo.Location = new System.Drawing.Point(100, 26);
             this.comboboxClienteNominativo.Name = "comboboxClienteNominativo";
             this.comboboxClienteNominativo.Size = new System.Drawing.Size(246, 24);
@@ -225,6 +229,7 @@
             this.button4.TabIndex = 13;
             this.button4.Text = "inserisci";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // lblCategoria
             // 
@@ -274,7 +279,7 @@
             this.textBoxDurata.Size = new System.Drawing.Size(100, 25);
             this.textBoxDurata.TabIndex = 7;
             this.textBoxDurata.TabStop = false;
-            this.textBoxDurata.Text = "00:00:00";
+            this.textBoxDurata.Text = "00:00";
             // 
             // lblStato
             // 
@@ -389,6 +394,7 @@
             this.button6.TabIndex = 19;
             this.button6.Text = "inserisci";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // textBoxDescrizioneFase
             // 
@@ -459,6 +465,65 @@
             this.lblStep.Size = new System.Drawing.Size(64, 13);
             this.lblStep.TabIndex = 2;
             this.lblStep.Text = "Step: active";
+            this.lblStep.Visible = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.operazioniToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // operazioniToolStripMenuItem
+            // 
+            this.operazioniToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dipendenteToolStripMenuItem,
+            this.amministratoreToolStripMenuItem});
+            this.operazioniToolStripMenuItem.Name = "operazioniToolStripMenuItem";
+            this.operazioniToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.operazioniToolStripMenuItem.Text = "Operazioni";
+            // 
+            // dipendenteToolStripMenuItem
+            // 
+            this.dipendenteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inserisciCostiStrutturaToolStripMenuItem});
+            this.dipendenteToolStripMenuItem.Name = "dipendenteToolStripMenuItem";
+            this.dipendenteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dipendenteToolStripMenuItem.Text = "Dipendente";
+            this.dipendenteToolStripMenuItem.Click += new System.EventHandler(this.dipendenteToolStripMenuItem_Click);
+            // 
+            // amministratoreToolStripMenuItem
+            // 
+            this.amministratoreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inserimentiToolStripMenuItem,
+            this.interrogazioniToolStripMenuItem});
+            this.amministratoreToolStripMenuItem.Name = "amministratoreToolStripMenuItem";
+            this.amministratoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.amministratoreToolStripMenuItem.Text = "Amministratore";
+            // 
+            // inserimentiToolStripMenuItem
+            // 
+            this.inserimentiToolStripMenuItem.Name = "inserimentiToolStripMenuItem";
+            this.inserimentiToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.inserimentiToolStripMenuItem.Text = "Inserimenti";
+            this.inserimentiToolStripMenuItem.Click += new System.EventHandler(this.inserimentiToolStripMenuItem_Click);
+            // 
+            // interrogazioniToolStripMenuItem
+            // 
+            this.interrogazioniToolStripMenuItem.Name = "interrogazioniToolStripMenuItem";
+            this.interrogazioniToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.interrogazioniToolStripMenuItem.Text = "Interrogazioni";
+            this.interrogazioniToolStripMenuItem.Click += new System.EventHandler(this.interrogazioniToolStripMenuItem_Click);
+            // 
+            // inserisciCostiStrutturaToolStripMenuItem
+            // 
+            this.inserisciCostiStrutturaToolStripMenuItem.Name = "inserisciCostiStrutturaToolStripMenuItem";
+            this.inserisciCostiStrutturaToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.inserisciCostiStrutturaToolStripMenuItem.Text = "Inserisci costi struttura";
+            this.inserisciCostiStrutturaToolStripMenuItem.Click += new System.EventHandler(this.inserisciCostiStrutturaToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -470,8 +535,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Studio";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.groupBox1.ResumeLayout(false);
@@ -482,6 +549,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCompenso)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,6 +592,13 @@
         private System.Windows.Forms.TextBox codiceFiscaleSecret;
         private System.Windows.Forms.Label lblStep;
         private System.Windows.Forms.TextBox textBoxNomePratica;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem operazioniToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dipendenteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem amministratoreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inserimentiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem interrogazioniToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inserisciCostiStrutturaToolStripMenuItem;
     }
 }
 

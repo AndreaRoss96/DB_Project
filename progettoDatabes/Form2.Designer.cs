@@ -30,6 +30,10 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.checkBoxTerminata = new System.Windows.Forms.CheckBox();
+            this.checkBoxPagata = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.radioButtonImpiegato = new System.Windows.Forms.RadioButton();
             this.radioButtonCollaboratore = new System.Windows.Forms.RadioButton();
@@ -51,6 +55,7 @@
             this.buttonOperazione = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -61,14 +66,18 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(368, -13);
+            this.dataGridView1.Location = new System.Drawing.Point(368, 1);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(414, 516);
+            this.dataGridView1.Size = new System.Drawing.Size(394, 496);
             this.dataGridView1.TabIndex = 0;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.panel3);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.label7);
@@ -83,11 +92,53 @@
             this.groupBox1.Controls.Add(this.comboBoxSede);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(333, 220);
+            this.groupBox1.Size = new System.Drawing.Size(333, 243);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Azioni disponibili";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.checkBoxTerminata);
+            this.panel3.Controls.Add(this.checkBoxPagata);
+            this.panel3.Location = new System.Drawing.Point(138, 109);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(177, 19);
+            this.panel3.TabIndex = 19;
+            // 
+            // checkBoxTerminata
+            // 
+            this.checkBoxTerminata.AutoSize = true;
+            this.checkBoxTerminata.Location = new System.Drawing.Point(103, 0);
+            this.checkBoxTerminata.Name = "checkBoxTerminata";
+            this.checkBoxTerminata.Size = new System.Drawing.Size(69, 17);
+            this.checkBoxTerminata.TabIndex = 1;
+            this.checkBoxTerminata.Text = "terminata";
+            this.checkBoxTerminata.UseVisualStyleBackColor = true;
+            this.checkBoxTerminata.CheckedChanged += new System.EventHandler(this.checkBoxTerminata_CheckedChanged);
+            // 
+            // checkBoxPagata
+            // 
+            this.checkBoxPagata.AutoSize = true;
+            this.checkBoxPagata.Location = new System.Drawing.Point(0, 0);
+            this.checkBoxPagata.Name = "checkBoxPagata";
+            this.checkBoxPagata.Size = new System.Drawing.Size(59, 17);
+            this.checkBoxPagata.TabIndex = 0;
+            this.checkBoxPagata.Text = "pagata";
+            this.checkBoxPagata.UseVisualStyleBackColor = true;
+            this.checkBoxPagata.CheckedChanged += new System.EventHandler(this.checkBoxPagata_CheckedChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 105);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(125, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Caratteristica prestazione";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // panel2
             // 
@@ -96,7 +147,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.radioButtonImpiegato);
             this.panel2.Controls.Add(this.radioButtonCollaboratore);
-            this.panel2.Location = new System.Drawing.Point(128, 137);
+            this.panel2.Location = new System.Drawing.Point(128, 161);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(187, 15);
             this.panel2.TabIndex = 17;
@@ -132,7 +183,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.radioButtonPF);
             this.panel1.Controls.Add(this.radioButtonAZ);
-            this.panel1.Location = new System.Drawing.Point(127, 108);
+            this.panel1.Location = new System.Drawing.Point(128, 135);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(165, 15);
             this.panel1.TabIndex = 16;
@@ -162,7 +213,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 184);
+            this.label7.Location = new System.Drawing.Point(6, 215);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 13);
             this.label7.TabIndex = 15;
@@ -171,7 +222,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 165);
+            this.label6.Location = new System.Drawing.Point(6, 182);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 14;
@@ -180,7 +231,7 @@
             // 
             // dateTimePickerFine
             // 
-            this.dateTimePickerFine.Location = new System.Drawing.Point(127, 184);
+            this.dateTimePickerFine.Location = new System.Drawing.Point(127, 208);
             this.dateTimePickerFine.Name = "dateTimePickerFine";
             this.dateTimePickerFine.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerFine.TabIndex = 13;
@@ -188,7 +239,7 @@
             // 
             // dateTimePickerInizio
             // 
-            this.dateTimePickerInizio.Location = new System.Drawing.Point(127, 158);
+            this.dateTimePickerInizio.Location = new System.Drawing.Point(127, 182);
             this.dateTimePickerInizio.Name = "dateTimePickerInizio";
             this.dateTimePickerInizio.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerInizio.TabIndex = 12;
@@ -197,7 +248,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 135);
+            this.label5.Location = new System.Drawing.Point(6, 161);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 13);
             this.label5.TabIndex = 9;
@@ -206,7 +257,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 110);
+            this.label4.Location = new System.Drawing.Point(6, 134);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 8;
@@ -255,20 +306,25 @@
             // 
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Items.AddRange(new object[] {
-            "Visualizza per ogni sede le città dei relativi clienti",
+            "Visualizzare per ogni sede le città dei relativi clienti",
             "Visualizzare per una certa sede i dipendendenti ed il relativo ruolo",
             "Visualizzare per ogni sede i relativi costi struttura",
             "Visualizzare per ogni cliente il relativo storico dei responsabili",
-            "Visualizzazione dei 5 dipendenti che hanno fatto meno fasi",
-            "Visualizzazione del totale delle ore dedicate ad un cliente",
-            "Visualizzare prestazioni per ogni cliente la cui durata supera la durata media de" +
-                "lle prestazioni",
+            "Visualizzare i 5 dipendenti che hanno fatto meno fasi",
+            "Visualizzare il totale delle ore dedicate ad un cliente",
+            "Visualizzare le prestazioni  la cui durata supera la durata media delle prestazio" +
+                "ni",
             "Visualizzare i dipendenti e le relative allocazioni",
             "Visualizzare l\'elenco dei clienti di una certa tipologia",
-            "Visualizzare stipendi,se si sceglie collaboratore selezionare anche il periodo",
+            "Visualizzare gli stipendi,se si sceglie collaboratore selezionare anche il period" +
+                "o",
             "Visualizzare i dipendenti e le relative responsabilità nel tempo,visualizzando an" +
-                "che chi non le ha mai avute"});
-            this.comboBox.Location = new System.Drawing.Point(12, 251);
+                "che chi non le ha mai avute",
+            "Visualizzare tutte le fasi svolte per un determinato cliente e info su di esso,su" +
+                "lla prestazione e sulla pratica",
+            "Visualizzare tutte le prestazioni terminate e/o pagate in base a un determinato c" +
+                "liente"});
+            this.comboBox.Location = new System.Drawing.Point(12, 284);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(314, 21);
             this.comboBox.TabIndex = 3;
@@ -277,7 +333,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 235);
+            this.label1.Location = new System.Drawing.Point(9, 258);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 13);
             this.label1.TabIndex = 4;
@@ -287,7 +343,7 @@
             // buttonOperazione
             // 
             this.buttonOperazione.Enabled = false;
-            this.buttonOperazione.Location = new System.Drawing.Point(12, 278);
+            this.buttonOperazione.Location = new System.Drawing.Point(12, 311);
             this.buttonOperazione.Name = "buttonOperazione";
             this.buttonOperazione.Size = new System.Drawing.Size(150, 23);
             this.buttonOperazione.TabIndex = 5;
@@ -307,9 +363,13 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form2";
             this.Text = "Form2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
+            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -342,5 +402,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.CheckBox checkBoxTerminata;
+        private System.Windows.Forms.CheckBox checkBoxPagata;
     }
 }
