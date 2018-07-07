@@ -88,6 +88,10 @@ namespace progettoDatabes
                     dateTimePickerFine.Enabled = false;
                     
                 break;
+                case 11:
+                    disabilitaTutto();
+                    comboBoxCliente.Enabled = true;
+                break;
                 default:
                     disabilitaTutto();
                 break;
@@ -418,13 +422,7 @@ namespace progettoDatabes
             {
                 //query 16
                 using (var db = new DataModel.StudioprofessionaleDB())
-                {/*
-                    Visualizzare i dipendenti e le relative responsabilità nel tempo,visualizzando anche chi non le ha mai avute
-                    select d.matricola,d.nome,d.cognome,d.tipo,cliente.codiceFiscale,cliente.nominativo,responsabile.dataInizio,responsabile.dataFine from Dipendente d
-left join responsabile on d.matricola = responsabile.matricola
-left join cliente on responsabile.codiceFiscale = cliente.codiceFiscale
-group by d.matricola,d.nome,d.cognome,d.tipo,cliente.codiceFiscale,cliente.nominativo,responsabile.dataInizio,responsabile.dataFine
-order by d.matricola,responsabile.dataInizio desc*/
+                {
                     var query = (
                         from d in db.Dipendentes
                         join r in db.Responsabiles on d.Matricola equals r.Matricola into j1
@@ -449,11 +447,43 @@ order by d.matricola,responsabile.dataInizio desc*/
 
                 }
             }
+            else if (comboBox.SelectedIndex == 11)
+            {
+                using (var db = new DataModel.StudioprofessionaleDB())
+                {
+                    var query = (
+                        from c in db.Clientes
+                        join pa in db.Praticas on c.CodiceFiscale equals pa.CodiceFiscale
+                        join pe in db.Prestaziones on new {pa.CodiceFiscale,pa.CodicePratica} equals new { pe.CodiceFiscale,pe.CodicePratica}
+                        join f in db.Fases on new { pe.CodiceFiscale,pe.CodicePratica,pe.CodicePrestazione} equals new { f.CodiceFiscale, f.CodicePratica, f.CodicePrestazione }
+                        where c.CodiceFiscale == codiceFiscale
+                        orderby new {c.CodiceFiscale,pa.CodicePratica,pe.CodicePrestazione}
+                        select new
+                        {
+                          c.CodiceFiscale,
+                          c.Nominativo,
+                          c.Tipo,
+                          c.PartitaIVA,
+                          pa.CodicePratica,
+                          pa.Nome,
+                          pe.CodicePrestazione,
+                          CompensoPrestazione=pe.Compenso,
+                          pe.Pagata,
+                          DescrizioneFase=f.Descrizione,
+                          InizioFase=f.Inizio,
+                          FineFase=f.Fine,
+                          f.Matricola
+                        }
+                        );
+                    dataGridView1.DataSource = query.ToList();
+
+                }
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-
+            //query 1
         }
 
      

@@ -263,14 +263,16 @@
             "Visualizzare per ogni cliente il relativo storico dei responsabili",
             "Visualizzare i 5 dipendenti che hanno fatto meno fasi",
             "Visualizzare il totale delle ore dedicate ad un cliente",
-            "Visualizzare le prestazioni per ogni cliente la cui durata supera la durata media" +
-                " delle prestazioni",
+            "Visualizzare le prestazioni  la cui durata supera la durata media delle prestazio" +
+                "ni",
             "Visualizzare i dipendenti e le relative allocazioni",
             "Visualizzare l\'elenco dei clienti di una certa tipologia",
             "Visualizzare gli stipendi,se si sceglie collaboratore selezionare anche il period" +
                 "o",
             "Visualizzare i dipendenti e le relative responsabilità nel tempo,visualizzando an" +
-                "che chi non le ha mai avute"});
+                "che chi non le ha mai avute",
+            "Visualizzare tutte le fasi svolte per un determinato cliente e info su di esso,su" +
+                "lla prestazione e sulla pratica"});
             this.comboBox.Location = new System.Drawing.Point(12, 251);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(314, 21);
