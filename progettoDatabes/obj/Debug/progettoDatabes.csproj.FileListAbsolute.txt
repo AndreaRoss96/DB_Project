@@ -57,3 +57,4 @@ C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debu
 C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.FormInserimentiAmministratore.resources
 C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.Form2.resources
 >>>>>>> 55627078052036772b5c54ca5915a0048a09f05e
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.costiStruttura.resources

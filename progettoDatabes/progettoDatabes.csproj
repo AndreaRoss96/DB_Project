@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="costiStruttura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="costiStruttura.Designer.cs">
+      <DependentUpon>costiStruttura.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\schemaprofessionale.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -75,20 +81,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
-	</Compile>
-
+    </Compile>
     <Compile Include="FormInserimentiAmministratore.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormInserimentiAmministratore.Designer.cs">
       <DependentUpon>FormInserimentiAmministratore.cs</DependentUpon>
-
     </Compile>
     <Compile Include="FormPerDipendente.cs">
       <SubType>Form</SubType>
@@ -96,20 +99,31 @@
     <Compile Include="FormPerDipendente.Designer.cs">
       <DependentUpon>FormPerDipendente.cs</DependentUpon>
     </Compile>
+    <Compile Include="loginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="loginForm.Designer.cs">
+      <DependentUpon>loginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="costiStruttura.resx">
+      <DependentUpon>costiStruttura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormInserimentiAmministratore.resx">
       <DependentUpon>FormInserimentiAmministratore.cs</DependentUpon>
-
     </EmbeddedResource>
     <EmbeddedResource Include="FormPerDipendente.resx">
       <DependentUpon>FormPerDipendente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loginForm.resx">
+      <DependentUpon>loginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
