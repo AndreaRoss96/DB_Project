@@ -31,7 +31,7 @@ namespace progettoDatabes
                 }
                 else
                 {
-                    Form1 mainForm = new Form1(this, q.ToList().First().Matricola, q.ToList().First().Amministratore);
+                    Studio mainForm = new Studio(this, q.ToList().First().Matricola, q.ToList().First().Amministratore);
                     mainForm.Show();
                     textBoxPassword.Clear();
                     this.Hide();

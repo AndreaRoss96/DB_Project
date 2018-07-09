@@ -15,8 +15,8 @@ namespace progettoDatabes
     public partial class costiStruttura : Form
     {
         int dip = -1;
-        Form1 mainForm = null;
-        public costiStruttura(Form1 callingForm, int matricola)
+        Studio mainForm = null;
+        public costiStruttura(Studio callingForm, int matricola)
         {
             dip = matricola;
             mainForm = callingForm;
@@ -73,6 +73,7 @@ namespace progettoDatabes
                     newCosto.Costo = Int32.Parse(numericUpDownCosto.Value.ToString());
                     newCosto.Descrizione = textBoxDescrizione.Text;
                     db.Insert(newCosto);
+                    MessageBox.Show("Inserimento effettuato!");
                 }
             }catch(Exception ex)
             {

@@ -19,8 +19,8 @@ namespace progettoDatabes
         private string codiceCliente = null;
         private int codicePratica=-1;
         private int matricola;
-        private Form1 mainForm = null;
-        public FormPerDipendente(Form1 callingForm, int codiceMatricola)
+        private Studio mainForm = null;
+        public FormPerDipendente(Studio callingForm, int codiceMatricola)
         {
             mainForm = callingForm;
             matricola = codiceMatricola;
@@ -111,7 +111,7 @@ namespace progettoDatabes
                         (from c in db.Clientes
                          join pa in db.Praticas on c.CodiceFiscale equals pa.CodiceFiscale
                          join f in db.Fases on new { pa.CodicePratica, pa.CodiceFiscale } equals new { f.CodicePratica, f.CodiceFiscale }
-                         where f.Matricola == 3
+                         where f.Matricola == matricola
                          select new
                          {
                              c.CodiceFiscale,
@@ -164,7 +164,7 @@ namespace progettoDatabes
                          join s in db.Sottocategorias on pe.CodiceSottocategoria equals s.CodiceSottocategoria
                          //  join pe in db.Prestaziones on f.CodiceFiscale equals pe.CodiceFiscale 
                          //   join pa in db.Praticas on pe.CodicePratica equals pa.CodicePratica
-                     where f.Matricola == 3
+                     where f.Matricola == matricola
                          where f.CodiceFiscale == codiceCliente
                      // where f.CodicePratica == pe.CodicePratica
                      // where pa.CodiceFiscale == pe.CodiceFiscale

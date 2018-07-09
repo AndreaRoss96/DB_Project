@@ -61,3 +61,5 @@ C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debu
 C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.costiStruttura.resources
 C:\Users\admin\Desktop\progetto databes\progettoDatabes\obj\Debug\progettoDatabes.loginForm.resources
 C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.loginForm.resources
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.Studio.resources
+C:\Users\Federico Galdenzi\source\repos\progettoDatabes\progettoDatabes\obj\Debug\progettoDatabes.Amministrazione.resources

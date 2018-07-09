@@ -18,14 +18,14 @@ namespace progettoDatabes
     {
         private string execution;
         private bool tipo;
-        private Form1 mainForm = null;
+        private Studio mainForm = null;
         private int matricola;
-        public FormInserimentiAmministratore(Form1 callingForm, int codiceMatricola)
+        public FormInserimentiAmministratore(Studio callingForm, int codiceMatricola)
         {
             mainForm = callingForm;
             matricola = codiceMatricola;
             InitializeComponent();
-            this.execution = "Ciao ";
+            this.execution = "";
             this.tipo = false;
 
             using (var db = new DataModel.StudioprofessionaleDB())
@@ -351,7 +351,7 @@ namespace progettoDatabes
                 try
                 {
                     DataModel.Dipendente newElem = new DataModel.Dipendente();
-                    newElem.Matricola = 5;
+                    newElem.Matricola = matricola;
                     newElem.Nome = textBoxNome.Text;
                     newElem.Cognome = textBoxCognomeCF.Text;
                     newElem.Via = textBoxVia.Text;
