@@ -534,6 +534,7 @@
             this.comboBoxDipendente.Name = "comboBoxDipendente";
             this.comboBoxDipendente.Size = new System.Drawing.Size(263, 24);
             this.comboBoxDipendente.TabIndex = 0;
+            this.comboBoxDipendente.SelectedIndexChanged += new System.EventHandler(this.comboBoxDipendente_SelectedIndexChanged);
             // 
             // label1
             // 

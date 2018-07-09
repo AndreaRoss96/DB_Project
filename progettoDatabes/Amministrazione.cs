@@ -252,8 +252,9 @@ namespace progettoDatabes
                 {
                     var query =
                         (from c in db.Clientes
-                         join pa in db.Praticas on c.CodiceFiscale equals pa.CodiceFiscale
-                         join pe in db.Prestaziones on new { pa.CodiceFiscale, pa.CodicePratica } equals new { pe.CodiceFiscale, pe.CodicePratica }
+                             //  join pa in db.Praticas on c.CodiceFiscale equals pa.CodiceFiscale
+                             // join pe in db.Prestaziones on new { pa.CodiceFiscale, pa.CodicePratica } equals new { pe.CodiceFiscale, pe.CodicePratica }
+                         join pe in db.Prestaziones on  c.CodiceFiscale equals  pe.CodiceFiscale
                          where c.CodiceFiscale == codiceFiscale
                          group pe by new { pe.Durata, c.CodiceFiscale, c.Nominativo, c.Tipo } into g
                          select new
