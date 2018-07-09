@@ -19,9 +19,11 @@ namespace progettoDatabes
         private string execution;
         private bool tipo;
         private Form1 mainForm = null;
-        public FormInserimentiAmministratore(Form1 callingForm)
+        private int matricola;
+        public FormInserimentiAmministratore(Form1 callingForm, int codiceMatricola)
         {
             mainForm = callingForm;
+            matricola = codiceMatricola;
             InitializeComponent();
             this.execution = "Ciao ";
             this.tipo = false;

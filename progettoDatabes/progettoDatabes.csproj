@@ -70,10 +70,10 @@
     <Compile Include="costiStruttura.Designer.cs">
       <DependentUpon>costiStruttura.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\schemaprofessionale.generated.cs">
+    <Compile Include="DataModel\studioprofessionale.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>schemaprofessionale.tt</DependentUpon>
+      <DependentUpon>studioprofessionale.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -164,9 +164,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataModel\schemaprofessionale.tt">
+    <Content Include="DataModel\studioprofessionale.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>schemaprofessionale.generated.cs</LastGenOutput>
+      <LastGenOutput>studioprofessionale.generated.cs</LastGenOutput>
     </Content>
     <Content Include="LinqToDB.Templates\CopyMe.MySql.tt.txt" />
   </ItemGroup>

@@ -15,13 +15,15 @@ namespace progettoDatabes
     public partial class FormPerDipendente : Form
     {
         //string connectionString = "Server=localhost;Port=3306;database=studioprofessionale;UID=root;password=;SslMode=none";
-        List<Tuple<String, String>> listCliente = new List<Tuple<String, String>>();
-        string codiceCliente = null;
-        int codicePratica=-1;
+        private List<Tuple<String, String>> listCliente = new List<Tuple<String, String>>();
+        private string codiceCliente = null;
+        private int codicePratica=-1;
+        private int matricola;
         private Form1 mainForm = null;
-        public FormPerDipendente(Form1 callingForm)
+        public FormPerDipendente(Form1 callingForm, int codiceMatricola)
         {
             mainForm = callingForm;
+            matricola = codiceMatricola;
             InitializeComponent();
             using (var db = new DataModel.StudioprofessionaleDB())
             {

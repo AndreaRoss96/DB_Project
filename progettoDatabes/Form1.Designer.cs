@@ -34,13 +34,14 @@
             this.codiceFiscaleSecret = new System.Windows.Forms.TextBox();
             this.lblData = new System.Windows.Forms.Label();
             this.dateTimePickerDataPratica = new System.Windows.Forms.DateTimePicker();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnInserisciPratica = new System.Windows.Forms.Button();
+            this.btnVisualizzaPratica = new System.Windows.Forms.Button();
             this.lblNomePratica = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnAggiornaPrestazione = new System.Windows.Forms.Button();
+            this.btnInserisciPrestazione = new System.Windows.Forms.Button();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
             this.lblSottocategoria = new System.Windows.Forms.Label();
@@ -53,9 +54,10 @@
             this.lblDurata = new System.Windows.Forms.Label();
             this.lblCompenso = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnAggiornaFase = new System.Windows.Forms.Button();
             this.labelDataFase = new System.Windows.Forms.Label();
             this.dateTimeDataFase = new System.Windows.Forms.DateTimePicker();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnInserisciFase = new System.Windows.Forms.Button();
             this.textBoxDescrizioneFase = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerFineFase = new System.Windows.Forms.DateTimePicker();
@@ -66,10 +68,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.operazioniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dipendenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inserisciCostiStrutturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operazioniPerDipendenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.amministratoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inserimentiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.interrogazioniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inserisciCostiStrutturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -98,8 +101,8 @@
             this.groupBox1.Controls.Add(this.codiceFiscaleSecret);
             this.groupBox1.Controls.Add(this.lblData);
             this.groupBox1.Controls.Add(this.dateTimePickerDataPratica);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btnInserisciPratica);
+            this.groupBox1.Controls.Add(this.btnVisualizzaPratica);
             this.groupBox1.Controls.Add(this.lblNomePratica);
             this.groupBox1.Controls.Add(this.lblCliente);
             this.groupBox1.Controls.Add(this.comboboxClienteNominativo);
@@ -148,25 +151,25 @@
             this.dateTimePickerDataPratica.Size = new System.Drawing.Size(116, 25);
             this.dateTimePickerDataPratica.TabIndex = 21;
             // 
-            // button5
+            // btnInserisciPratica
             // 
-            this.button5.Location = new System.Drawing.Point(164, 126);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(84, 28);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "inserisci";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnInserisciPratica.Location = new System.Drawing.Point(164, 126);
+            this.btnInserisciPratica.Name = "btnInserisciPratica";
+            this.btnInserisciPratica.Size = new System.Drawing.Size(84, 28);
+            this.btnInserisciPratica.TabIndex = 5;
+            this.btnInserisciPratica.Text = "inserisci";
+            this.btnInserisciPratica.UseVisualStyleBackColor = true;
+            this.btnInserisciPratica.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button2
+            // btnVisualizzaPratica
             // 
-            this.button2.Location = new System.Drawing.Point(74, 126);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 28);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "visualizza";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnVisualizzaPratica.Location = new System.Drawing.Point(74, 126);
+            this.btnVisualizzaPratica.Name = "btnVisualizzaPratica";
+            this.btnVisualizzaPratica.Size = new System.Drawing.Size(84, 28);
+            this.btnVisualizzaPratica.TabIndex = 4;
+            this.btnVisualizzaPratica.Text = "visualizza";
+            this.btnVisualizzaPratica.UseVisualStyleBackColor = true;
+            this.btnVisualizzaPratica.Click += new System.EventHandler(this.button2_Click);
             // 
             // lblNomePratica
             // 
@@ -200,7 +203,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button4);
+            this.groupBox2.Controls.Add(this.btnAggiornaPrestazione);
+            this.groupBox2.Controls.Add(this.btnInserisciPrestazione);
             this.groupBox2.Controls.Add(this.lblCategoria);
             this.groupBox2.Controls.Add(this.comboBoxCategoria);
             this.groupBox2.Controls.Add(this.lblSottocategoria);
@@ -220,16 +224,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Prestazione";
             // 
-            // button4
+            // btnAggiornaPrestazione
             // 
-            this.button4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(124, 179);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(83, 28);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "inserisci";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnAggiornaPrestazione.Location = new System.Drawing.Point(181, 179);
+            this.btnAggiornaPrestazione.Name = "btnAggiornaPrestazione";
+            this.btnAggiornaPrestazione.Size = new System.Drawing.Size(83, 28);
+            this.btnAggiornaPrestazione.TabIndex = 23;
+            this.btnAggiornaPrestazione.Text = "aggiorna";
+            this.btnAggiornaPrestazione.UseVisualStyleBackColor = true;
+            this.btnAggiornaPrestazione.Click += new System.EventHandler(this.btnAggiornaPrestazione_Click);
+            // 
+            // btnInserisciPrestazione
+            // 
+            this.btnInserisciPrestazione.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInserisciPrestazione.Location = new System.Drawing.Point(77, 179);
+            this.btnInserisciPrestazione.Name = "btnInserisciPrestazione";
+            this.btnInserisciPrestazione.Size = new System.Drawing.Size(83, 28);
+            this.btnInserisciPrestazione.TabIndex = 13;
+            this.btnInserisciPrestazione.Text = "inserisci";
+            this.btnInserisciPrestazione.UseVisualStyleBackColor = true;
+            this.btnInserisciPrestazione.Click += new System.EventHandler(this.button4_Click);
             // 
             // lblCategoria
             // 
@@ -348,9 +362,10 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnAggiornaFase);
             this.groupBox3.Controls.Add(this.labelDataFase);
             this.groupBox3.Controls.Add(this.dateTimeDataFase);
-            this.groupBox3.Controls.Add(this.button6);
+            this.groupBox3.Controls.Add(this.btnInserisciFase);
             this.groupBox3.Controls.Add(this.textBoxDescrizioneFase);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.dateTimePickerFineFase);
@@ -364,6 +379,16 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Fase";
+            // 
+            // btnAggiornaFase
+            // 
+            this.btnAggiornaFase.Location = new System.Drawing.Point(181, 213);
+            this.btnAggiornaFase.Name = "btnAggiornaFase";
+            this.btnAggiornaFase.Size = new System.Drawing.Size(83, 28);
+            this.btnAggiornaFase.TabIndex = 22;
+            this.btnAggiornaFase.Text = "aggiorna";
+            this.btnAggiornaFase.UseVisualStyleBackColor = true;
+            this.btnAggiornaFase.Click += new System.EventHandler(this.btnAggiornaFase_Click);
             // 
             // labelDataFase
             // 
@@ -386,15 +411,15 @@
             this.dateTimeDataFase.Size = new System.Drawing.Size(116, 25);
             this.dateTimeDataFase.TabIndex = 20;
             // 
-            // button6
+            // btnInserisciFase
             // 
-            this.button6.Location = new System.Drawing.Point(130, 215);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(83, 28);
-            this.button6.TabIndex = 19;
-            this.button6.Text = "inserisci";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnInserisciFase.Location = new System.Drawing.Point(74, 213);
+            this.btnInserisciFase.Name = "btnInserisciFase";
+            this.btnInserisciFase.Size = new System.Drawing.Size(83, 28);
+            this.btnInserisciFase.TabIndex = 19;
+            this.btnInserisciFase.Text = "inserisci";
+            this.btnInserisciFase.UseVisualStyleBackColor = true;
+            this.btnInserisciFase.Click += new System.EventHandler(this.button6_Click);
             // 
             // textBoxDescrizioneFase
             // 
@@ -489,11 +514,26 @@
             // dipendenteToolStripMenuItem
             // 
             this.dipendenteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inserisciCostiStrutturaToolStripMenuItem});
+            this.inserisciCostiStrutturaToolStripMenuItem,
+            this.operazioniPerDipendenteToolStripMenuItem});
             this.dipendenteToolStripMenuItem.Name = "dipendenteToolStripMenuItem";
-            this.dipendenteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dipendenteToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.dipendenteToolStripMenuItem.Text = "Dipendente";
             this.dipendenteToolStripMenuItem.Click += new System.EventHandler(this.dipendenteToolStripMenuItem_Click);
+            // 
+            // inserisciCostiStrutturaToolStripMenuItem
+            // 
+            this.inserisciCostiStrutturaToolStripMenuItem.Name = "inserisciCostiStrutturaToolStripMenuItem";
+            this.inserisciCostiStrutturaToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.inserisciCostiStrutturaToolStripMenuItem.Text = "Inserisci costi struttura";
+            this.inserisciCostiStrutturaToolStripMenuItem.Click += new System.EventHandler(this.inserisciCostiStrutturaToolStripMenuItem_Click);
+            // 
+            // operazioniPerDipendenteToolStripMenuItem
+            // 
+            this.operazioniPerDipendenteToolStripMenuItem.Name = "operazioniPerDipendenteToolStripMenuItem";
+            this.operazioniPerDipendenteToolStripMenuItem.Size = new System.Drawing.Size(214, 22);
+            this.operazioniPerDipendenteToolStripMenuItem.Text = "Operazioni per dipendente";
+            this.operazioniPerDipendenteToolStripMenuItem.Click += new System.EventHandler(this.operazioniPerDipendenteToolStripMenuItem_Click);
             // 
             // amministratoreToolStripMenuItem
             // 
@@ -501,7 +541,7 @@
             this.inserimentiToolStripMenuItem,
             this.interrogazioniToolStripMenuItem});
             this.amministratoreToolStripMenuItem.Name = "amministratoreToolStripMenuItem";
-            this.amministratoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.amministratoreToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.amministratoreToolStripMenuItem.Text = "Amministratore";
             // 
             // inserimentiToolStripMenuItem
@@ -518,13 +558,6 @@
             this.interrogazioniToolStripMenuItem.Text = "Interrogazioni";
             this.interrogazioniToolStripMenuItem.Click += new System.EventHandler(this.interrogazioniToolStripMenuItem_Click);
             // 
-            // inserisciCostiStrutturaToolStripMenuItem
-            // 
-            this.inserisciCostiStrutturaToolStripMenuItem.Name = "inserisciCostiStrutturaToolStripMenuItem";
-            this.inserisciCostiStrutturaToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.inserisciCostiStrutturaToolStripMenuItem.Text = "Inserisci costi struttura";
-            this.inserisciCostiStrutturaToolStripMenuItem.Click += new System.EventHandler(this.inserisciCostiStrutturaToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -539,6 +572,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Studio";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.groupBox1.ResumeLayout(false);
@@ -581,12 +615,12 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerFineFase;
         private System.Windows.Forms.TextBox textBoxDescrizioneFase;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnInserisciPratica;
+        private System.Windows.Forms.Button btnVisualizzaPratica;
+        private System.Windows.Forms.Button btnInserisciPrestazione;
         private System.Windows.Forms.Label labelDataFase;
         private System.Windows.Forms.DateTimePicker dateTimeDataFase;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnInserisciFase;
         private System.Windows.Forms.Label lblData;
         private System.Windows.Forms.DateTimePicker dateTimePickerDataPratica;
         private System.Windows.Forms.TextBox codiceFiscaleSecret;
@@ -599,6 +633,9 @@
         private System.Windows.Forms.ToolStripMenuItem inserimentiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem interrogazioniToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inserisciCostiStrutturaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem operazioniPerDipendenteToolStripMenuItem;
+        private System.Windows.Forms.Button btnAggiornaFase;
+        private System.Windows.Forms.Button btnAggiornaPrestazione;
     }
 }
 

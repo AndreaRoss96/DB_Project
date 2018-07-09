@@ -17,14 +17,18 @@ namespace progettoDatabes
 
     public partial class Form1 : Form
     {
-        string codiceFiscaleSelected;
-        int codicePraticaSelected;
-        int codicePrestazioneSelected;
-        int matricola = 1;
-
-        public Form1()
+        private string codiceFiscaleSelected;
+        private int codicePraticaSelected;
+        private int codicePrestazioneSelected;
+        private int matricola = -1;
+        private int amministratore=0;
+        private DateTime dataFase = new DateTime();
+        private loginForm caller;
+        public Form1(loginForm caller,int loginmatricola, int loginamministratore)
         {
-
+            this.caller = caller;
+            matricola = loginmatricola;
+            amministratore = loginamministratore;
             InitializeComponent();
         }
 
@@ -61,7 +65,10 @@ namespace progettoDatabes
         private void Form1_Load(object sender, EventArgs e)
         {
             this.SetDesktopLocation(0, 0);
-
+            if(amministratore!=1)
+            {
+                amministratoreToolStripMenuItem.Visible = false;
+            }
         }
 
         private void comboboxClienteNominativo_SelectedIndexChanged(object sender, EventArgs e)
@@ -87,6 +94,9 @@ namespace progettoDatabes
                 {
                     var queryCliente =
                         (from c in db.Clientes
+                         from a in db.Allocaziones
+                         where a.Matricola == matricola
+                         where c.CodiceSede == a.CodiceSede
                          select new
                          {
                              c.Nominativo,
@@ -175,11 +185,13 @@ namespace progettoDatabes
                         dataGridView1.Columns["NomeCategoria"].Visible = true;
                         lblStep.Text = "Step: prestazione";
                         groupBox2.Enabled = true;
+                        btnAggiornaPrestazione.Enabled = false;
                     }
 
                 }
                 else if (lblStep.Text.Equals("Step: prestazione"))
                 {
+                    btnAggiornaPrestazione.Enabled = true;
                     comboBoxCategoria.Text = dataGridView1["NomeCategoria", e.RowIndex].Value.ToString();
                     numericUpDownCompenso.Value = Int32.Parse(dataGridView1["Compenso", e.RowIndex].Value.ToString());
                     checkBoxPagata.Checked = (bool)dataGridView1["Pagata", e.RowIndex].Value;
@@ -205,16 +217,19 @@ namespace progettoDatabes
                         dataGridView1.DataSource = q.ToList();
                         lblStep.Text = "Step: fase";
                         groupBox3.Enabled = true;
+                        btnAggiornaFase.Enabled = false;
                     }
                 }
                 else if (lblStep.Text.Equals("Step: fase"))
                 {
                     groupBox2.Enabled = false;
+                    btnAggiornaFase.Enabled = true;
                     groupBox3.Enabled = true;
                     string data = dataGridView1["Inizio", e.RowIndex].Value.ToString().Split(' ')[0].Replace('/', '-');
                     string inizio = dataGridView1["Inizio", e.RowIndex].Value.ToString().Split(' ')[1];
                     string fine = dataGridView1["Fine", e.RowIndex].Value.ToString().Split(' ')[1];
                     dateTimeDataFase.Value = DateTime.ParseExact(data, "dd-MM-yyyy", null);
+                    dataFase = DateTime.ParseExact(data, "dd-MM-yyyy", null);
                     dateTimePickerInizioFase.Text = inizio;
                     dateTimePickerFineFase.Text = fine;
                     textBoxDescrizioneFase.Text = dataGridView1["Descrizione", e.RowIndex].Value.ToString();
@@ -347,7 +362,7 @@ namespace progettoDatabes
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show(ex.Message);
                 }
 
             }
@@ -359,7 +374,6 @@ namespace progettoDatabes
             string date = dateTimeDataFase.Value.ToShortDateString().Replace('/', '-');
             string inizio = dateTimePickerInizioFase.Value.ToLongTimeString();
             string fine = dateTimePickerFineFase.Value.ToLongTimeString();
-            MessageBox.Show(date + " " + inizio + "\n" + date + " " + fine); 
             using (var db = new DataModel.StudioprofessionaleDB())
             {
                 try
@@ -372,8 +386,10 @@ namespace progettoDatabes
                     newFase.Matricola = matricola;
                     newFase.Inizio = DateTime.Parse(date + " " + inizio);
                     newFase.Fine = DateTime.Parse(date + " " + fine);
-
-                    db.Insert(newFase);
+                    
+                        db.Insert(newFase);
+                    
+                   
                     var q =
                         (from f in db.Fases
                          join dip in db.Dipendentes on f.Matricola equals dip.Matricola
@@ -400,28 +416,23 @@ namespace progettoDatabes
 
         private void dipendenteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            using (FormPerDipendente fDipendente = new FormPerDipendente(this))
-            {
-                fDipendente.ShowDialog(this);
-               
-            }
+            
             
         }
 
         private void inserimentiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            using (FormInserimentiAmministratore fInsAmministratore = new FormInserimentiAmministratore(this))
-            {
+             this.Visible = false;
+             using (FormInserimentiAmministratore fInsAmministratore = new FormInserimentiAmministratore(this,matricola))
+             {
                 fInsAmministratore.ShowDialog(this);
-            }
+             }
         }
 
         private void interrogazioniToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            using (Form2 fInterrogazioni = new Form2(this))
+            using (Form2 fInterrogazioni = new Form2(this,matricola))
             {
                 fInterrogazioni.ShowDialog(this);
             }
@@ -433,6 +444,109 @@ namespace progettoDatabes
             using (costiStruttura fInterrogazioni = new costiStruttura(this,matricola))
             {
                 fInterrogazioni.ShowDialog(this);
+            }
+            
+        }
+
+        private void operazioniPerDipendenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            using (FormPerDipendente fDipendente = new FormPerDipendente(this,matricola))
+            {
+                fDipendente.ShowDialog(this);
+
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            caller.Show();
+        }
+
+        private void btnAggiornaPrestazione_Click(object sender, EventArgs e)
+        {
+            int codiceSottocategoria=0;
+            using(var db = new DataModel.StudioprofessionaleDB())
+            {
+                var querySottocategoria =
+                            (from sc in db.Sottocategorias
+                             where sc.Nome == comboBoxSottocategoria.Text
+                             select new
+                             {
+                                 sc.CodiceSottocategoria
+                             });
+
+                codiceSottocategoria = querySottocategoria.ToList().First().CodiceSottocategoria;
+
+                db.Prestaziones
+                    .Where(r => r.CodiceFiscale == codiceFiscaleSelected)
+                    .Where(r => r.CodicePrestazione == codicePrestazioneSelected)
+                    .Where(r => r.CodicePratica == codicePraticaSelected)
+                    .Set(p => p.CodiceSottocategoria, codiceSottocategoria)
+                    .Set(p => p.Compenso, Int32.Parse(numericUpDownCompenso.Value.ToString()))
+                    .Set(p => p.Durata, TimeSpan.Parse(textBoxDurata.Text))
+                    .Set(p => p.Pagata, checkBoxPagata.Checked)
+                    .Set(p => p.Terminata, checkBoxTerminata.Checked)
+                    .Update();
+                var qe =
+                            (from p in db.Prestaziones
+                             join s in db.Sottocategorias on p.CodiceSottocategoria equals s.CodiceSottocategoria
+                             join ca in db.Categorias on s.CodiceCategoria equals ca.CodiceCategoria
+                             where p.CodiceFiscale == codiceFiscaleSelected
+                             where p.CodicePratica == codicePraticaSelected
+                             select new
+                             {
+                                 s.Nome,
+                                 p.Compenso,
+                                 p.Durata,
+                                 p.Pagata,
+                                 p.Terminata,
+                                 p.CodicePrestazione,
+                                 NomeCategoria = ca.Nome
+                             }).OrderBy((x) => (x.CodicePrestazione));
+                dataGridView1.DataSource = qe.ToList();
+                dataGridView1.Columns["CodicePrestazione"].Visible = false;
+                dataGridView1.Columns["NomeCategoria"].Visible = true;
+                lblStep.Text = "Step: prestazione";
+                groupBox2.Enabled = true;
+            }
+        }
+
+        private void btnAggiornaFase_Click(object sender, EventArgs e)
+        {
+            
+            string date = dateTimeDataFase.Value.ToShortDateString().Replace('/', '-');
+            string inizio = dateTimePickerInizioFase.Value.ToLongTimeString();
+            string fine = dateTimePickerFineFase.Value.ToLongTimeString();
+            MessageBox.Show(DateTime.Parse(dataFase.ToString().Replace('/','-')).ToString());
+            using (var db = new DataModel.StudioprofessionaleDB())
+            {
+                db.Fases
+                   .Where(f => f.CodiceFiscale == codiceFiscaleSelected)
+                   .Where(f => f.CodicePratica == codicePraticaSelected)
+                   .Where(f => f.CodicePrestazione == codicePrestazioneSelected)
+                   .Where(f => f.Inizio.Equals(dataFase))
+                   .Where(f => f.Matricola == matricola)
+                   .Set(f => f.Inizio, DateTime.Parse(date + " " + inizio))
+                   .Set(f => f.Fine, DateTime.Parse(date + " " + fine))
+                   .Set(f => f.Descrizione, textBoxDescrizioneFase.Text)
+                   .Update();
+                var q =
+                        (from f in db.Fases
+                         join dip in db.Dipendentes on f.Matricola equals dip.Matricola
+                         where f.CodiceFiscale == codiceFiscaleSelected
+                         where f.CodicePratica == codicePraticaSelected
+                         where f.CodicePrestazione == codicePrestazioneSelected
+                         select new
+                         {
+                             dip.Cognome,
+                             f.Inizio,
+                             f.Fine,
+                             f.Descrizione,
+                         });
+                dataGridView1.DataSource = q.ToList();
+                lblStep.Text = "Step: fase";
+                groupBox3.Enabled = true;
             }
         }
     }

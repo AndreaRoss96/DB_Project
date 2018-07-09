@@ -20,6 +20,7 @@ namespace DataModel
 	/// </summary>
 	public partial class StudioprofessionaleDB : LinqToDB.Data.DataConnection
 	{
+		public ITable<Account>        Accounts        { get { return this.GetTable<Account>(); } }
 		public ITable<Allocazione>    Allocaziones    { get { return this.GetTable<Allocazione>(); } }
 		public ITable<Categoria>      Categorias      { get { return this.GetTable<Categoria>(); } }
 		public ITable<Cliente>        Clientes        { get { return this.GetTable<Cliente>(); } }
@@ -45,6 +46,15 @@ namespace DataModel
 		}
 
 		partial void InitDataContext();
+	}
+
+	[Table("account")]
+	public partial class Account
+	{
+		[Column("username"),       PrimaryKey, NotNull] public string Username       { get; set; } // varchar(20)
+		[Column("password"),                   NotNull] public string Password       { get; set; } // varchar(20)
+		[Column("matricola"),                  NotNull] public int    Matricola      { get; set; } // int(11)
+		[Column("amministratore"),             NotNull] public sbyte  Amministratore { get; set; } // tinyint(4)
 	}
 
 	[Table("allocazione")]
@@ -244,6 +254,12 @@ namespace DataModel
 
 	public static partial class TableExtensions
 	{
+		public static Account Find(this ITable<Account> table, string Username)
+		{
+			return table.FirstOrDefault(t =>
+				t.Username == Username);
+		}
+
 		public static Allocazione Find(this ITable<Allocazione> table, int Matricola, int CodiceSede)
 		{
 			return table.FirstOrDefault(t =>

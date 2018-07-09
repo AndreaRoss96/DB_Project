@@ -25,9 +25,11 @@ namespace progettoDatabes
         DateTime inizio=DateTime.Now;
         DateTime fine=DateTime.Now;
         private Form1 mainForm = null;
-        public Form2(Form1 callingForm)
+        private int matricola;
+        public Form2(Form1 callingForm,int codiceMatricola)
         {
             mainForm = callingForm;
+            matricola = codiceMatricola;
             InitializeComponent();
             disabilitaTutto();
             using (var db = new DataModel.StudioprofessionaleDB())
@@ -194,7 +196,7 @@ namespace progettoDatabes
                     dataGridView1.DataSource = query.ToList();
                 }
             }
-            else if (comboBox.SelectedIndex == 3)
+            else if (comboBox.SelectedIndex == matricola)
             { //query 6
                 using (var db = new DataModel.StudioprofessionaleDB())
                 {
@@ -396,14 +398,14 @@ namespace progettoDatabes
                             connection = new MySqlConnection(cs);
                             connection.Open();
 
-                           //  string stm = "SELECT distinct d.matricola, nome, cognome,(costoOrario/60) * (SELECT(SUM(TIMESTAMPDIFF(MINUTE, inizio, fine)))FROM DIPENDENTE D1, FASE F1 WHERE D.matricola = D1.matricola AND F.matricola = F1.matricola  AND F1.inizio >=@A AND F1.fine <=@B) AS stipendio from dipendente d,fase f where tipo IN('C') and f.matricola = d.matricola";
-                            string stm = "SELECT distinct d.matricola, nome, cognome,(costoOrario / 60) * (SELECT(SUM(TIMESTAMPDIFF(MINUTE, inizio, fine)))FROM DIPENDENTE D1, FASE F1 WHERE D.matricola = D1.matricola AND F.matricola = F1.matricola  AND F1.inizio >='" + inizio.ToString("yyyy-MM-dd")+"' AND F1.fine <='"+ fine.ToString("yyyy-MM-dd")+"' )AS stipendio from dipendente d,fase f where tipo IN('C') and f.matricola = d.matricola";
-                           // MySqlCommand cmd = new MySqlCommand(stm,connection);
-                         //  cmd.Parameters.AddWithValue("@A","'"+inizio.ToString("yyyy-MM-dd")+"'");
-                           //   cmd.Parameters.AddWithValue("@B", "'"+fine.ToString("yyyy-MM-dd") + "'");
-                          //  MessageBox.Show(cmd.Parameters.ToString());
-                          //  var mySqlDataAdapter = new MySqlDataAdapter(cmd);
-                            var mySqlDataAdapter = new MySqlDataAdapter(stm,connection);
+                            //  string stm = "SELECT distinct d.matricola, nome, cognome,(costoOrario/60) * (SELECT(SUM(TIMESTAMPDIFF(MINUTE, inizio, fine)))FROM DIPENDENTE D1, FASE F1 WHERE D.matricola = D1.matricola AND F.matricola = F1.matricola  AND F1.inizio >=@A AND F1.fine <=@B) AS stipendio from dipendente d,fase f where tipo IN('C') and f.matricola = d.matricola";
+                            string stm = "SELECT distinct d.matricola, nome, cognome,(costoOrario / 60) * (SELECT(SUM(TIMESTAMPDIFF(MINUTE, inizio, fine)))FROM DIPENDENTE D1, FASE F1 WHERE D.matricola = D1.matricola AND F.matricola = F1.matricola  AND F1.inizio >='" + inizio.ToString("yyyy-MM-dd") + "' AND F1.fine <='" + fine.ToString("yyyy-MM-dd") + "' )AS stipendio from dipendente d,fase f where tipo IN('C') and f.matricola = d.matricola";
+                            // MySqlCommand cmd = new MySqlCommand(stm,connection);
+                            //  cmd.Parameters.AddWithValue("@A","'"+inizio.ToString("yyyy-MM-dd")+"'");
+                            //   cmd.Parameters.AddWithValue("@B", "'"+fine.ToString("yyyy-MM-dd") + "'");
+                            //  MessageBox.Show(cmd.Parameters.ToString());
+                            //  var mySqlDataAdapter = new MySqlDataAdapter(cmd);
+                            var mySqlDataAdapter = new MySqlDataAdapter(stm, connection);
                             DataSet DS = new DataSet();
                             mySqlDataAdapter.Fill(DS);
                             dataGridView1.DataSource = DS.Tables[0];
@@ -462,25 +464,25 @@ namespace progettoDatabes
                     var query = (
                         from c in db.Clientes
                         join pa in db.Praticas on c.CodiceFiscale equals pa.CodiceFiscale
-                        join pe in db.Prestaziones on new {pa.CodiceFiscale,pa.CodicePratica} equals new { pe.CodiceFiscale,pe.CodicePratica}
-                        join f in db.Fases on new { pe.CodiceFiscale,pe.CodicePratica,pe.CodicePrestazione} equals new { f.CodiceFiscale, f.CodicePratica, f.CodicePrestazione }
+                        join pe in db.Prestaziones on new { pa.CodiceFiscale, pa.CodicePratica } equals new { pe.CodiceFiscale, pe.CodicePratica }
+                        join f in db.Fases on new { pe.CodiceFiscale, pe.CodicePratica, pe.CodicePrestazione } equals new { f.CodiceFiscale, f.CodicePratica, f.CodicePrestazione }
                         where c.CodiceFiscale == codiceFiscale
-                        orderby new {c.CodiceFiscale,pa.CodicePratica,pe.CodicePrestazione}
+                        orderby new { c.CodiceFiscale, pa.CodicePratica, pe.CodicePrestazione }
                         select new
                         {
-                          c.CodiceFiscale,
-                          c.Nominativo,
-                          c.Tipo,
-                          c.PartitaIVA,
-                          pa.CodicePratica,
-                          pa.Nome,
-                          pe.CodicePrestazione,
-                          CompensoPrestazione=pe.Compenso,
-                          pe.Pagata,
-                          DescrizioneFase=f.Descrizione,
-                          InizioFase=f.Inizio,
-                          FineFase=f.Fine,
-                          f.Matricola
+                            c.CodiceFiscale,
+                            c.Nominativo,
+                            c.Tipo,
+                            c.PartitaIVA,
+                            pa.CodicePratica,
+                            pa.Nome,
+                            pe.CodicePrestazione,
+                            CompensoPrestazione = pe.Compenso,
+                            pe.Pagata,
+                            DescrizioneFase = f.Descrizione,
+                            InizioFase = f.Inizio,
+                            FineFase = f.Fine,
+                            f.Matricola
                         }
                         );
                     dataGridView1.DataSource = query.ToList();
@@ -517,8 +519,46 @@ namespace progettoDatabes
 
                 }
             }
-        }
+            else if (comboBox.SelectedIndex == 13)
+            {
+                using (var db = new DataModel.StudioprofessionaleDB())
+                {
+                    var query = (
+                        from p in db.Prestaziones
+                        join s in db.Sottocategorias on p.CodiceSottocategoria equals s.CodiceSottocategoria
+                        join c in db.Categorias on s.CodiceCategoria equals c.CodiceCategoria
+                        group p by new { p.CodiceSottocategoria, s.Nome } into g
+                        orderby g.Count() descending
+                        select new
+                        {
 
+                            codiceSottocategoria = g.Key.CodiceSottocategoria,
+                            nome = g.Key.Nome,
+                            numeroAttività = g.Count()
+                        }
+                        );
+                    dataGridView1.DataSource = query.ToList();
+                }
+            }
+            else if (comboBox.SelectedIndex == 14)
+            {
+                using (var db = new DataModel.StudioprofessionaleDB())
+                {
+                    var query = (
+                        from c in db.Clientes
+                        join p in db.Prestaziones on c.CodiceFiscale equals p.CodiceFiscale
+                        where p.Pagata == true
+                        group c by c.CodiceFiscale into g
+                        orderby g.Count() descending
+                        select new
+                        {
+                            codiceFiscale = g.Key,
+                            numeroPrestazioniPagate = g.Count()
+                        }
+                        );
+                }
+            }
+        }
         private void label2_Click(object sender, EventArgs e)
         {
           

@@ -323,10 +323,12 @@
             "Visualizzare tutte le fasi svolte per un determinato cliente e info su di esso,su" +
                 "lla prestazione e sulla pratica",
             "Visualizzare tutte le prestazioni terminate e/o pagate in base a un determinato c" +
-                "liente"});
+                "liente",
+            "VIsualizzare la sottocategoria (e la relativa categoria) più richiesta",
+            "Visualizzare il numero di prestazioni pagate per cliente in ordine decrescente"});
             this.comboBox.Location = new System.Drawing.Point(12, 284);
             this.comboBox.Name = "comboBox";
-            this.comboBox.Size = new System.Drawing.Size(314, 21);
+            this.comboBox.Size = new System.Drawing.Size(350, 21);
             this.comboBox.TabIndex = 3;
             this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
