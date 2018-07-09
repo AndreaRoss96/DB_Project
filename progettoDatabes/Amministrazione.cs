@@ -542,20 +542,28 @@ namespace progettoDatabes
             }
             else if (comboBox.SelectedIndex == 14)
             {
-                using (var db = new DataModel.StudioprofessionaleDB())
+                try
                 {
-                    var query = (
-                        from c in db.Clientes
-                        join p in db.Prestaziones on c.CodiceFiscale equals p.CodiceFiscale
-                        where p.Pagata == true
-                        group c by c.CodiceFiscale into g
-                        orderby g.Count() descending
-                        select new
-                        {
-                            codiceFiscale = g.Key,
-                            numeroPrestazioniPagate = g.Count()
-                        }
-                        );
+
+
+                    using (var db = new DataModel.StudioprofessionaleDB())
+                    {
+                        var query = (
+                            from c in db.Clientes
+                            join p in db.Prestaziones on c.CodiceFiscale equals p.CodiceFiscale
+                            where p.Pagata == true
+                            group c by c.CodiceFiscale into g
+                            orderby g.Count() descending
+                            select new
+                            {
+                                codiceFiscale = g.Key,
+                                numeroPrestazioniPagate = g.Count()
+                            });
+                        dataGridView1.DataSource = query.ToList();
+                    }
+                }catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
