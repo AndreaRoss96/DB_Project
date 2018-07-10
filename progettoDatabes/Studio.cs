@@ -525,7 +525,7 @@ namespace progettoDatabes
                 string date = dateTimeDataFase.Value.ToShortDateString().Replace('/', '-');
                 string inizio = dateTimePickerInizioFase.Value.ToLongTimeString();
                 string fine = dateTimePickerFineFase.Value.ToLongTimeString();
-                MessageBox.Show(DateTime.Parse(dataFase.ToString().Replace('/', '-')).ToString());
+              //  MessageBox.Show(DateTime.Parse(dataFase.ToString().Replace('/', '-')).ToString());
                 using (var db = new DataModel.StudioprofessionaleDB())
                 {
                     db.Fases

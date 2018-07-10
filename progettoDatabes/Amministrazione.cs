@@ -248,28 +248,33 @@ namespace progettoDatabes
             {
                 //query 8            
 
-                using (var db = new DataModel.StudioprofessionaleDB())
+                MySqlConnection connection = null;
+
+                try
                 {
-                    var query =
-                        (from c in db.Clientes
-                             //  join pa in db.Praticas on c.CodiceFiscale equals pa.CodiceFiscale
-                             // join pe in db.Prestaziones on new { pa.CodiceFiscale, pa.CodicePratica } equals new { pe.CodiceFiscale, pe.CodicePratica }
-                         join pe in db.Prestaziones on  c.CodiceFiscale equals  pe.CodiceFiscale
-                         where c.CodiceFiscale == codiceFiscale
-                         group pe by new { pe.Durata, c.CodiceFiscale, c.Nominativo, c.Tipo } into g
-                         select new
-                         {
-                             g.Key.CodiceFiscale,
-                             g.Key.Nominativo,
-                             g.Key.Tipo,
-                             OreDedicate = g.Key.Durata
+                    connection = new MySqlConnection(cs);
+                    connection.Open();
 
-                         }
-                         );
-                    var list = query.ToList();
-                    var totalSpan = new TimeSpan(list.Sum(r => r.OreDedicate.Ticks));
-                    MessageBox.Show(totalSpan.ToString());
+                    string stm = "SELECT c.codiceFiscale,c.nominativo,c.tipo,(SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(durata)))) AS oreDedicate FROM cliente c,prestazione pe WHERE c.codiceFiscale = '"+codiceFiscale+"' AND c.codiceFiscale = pe.codiceFiscale ";
+                    var mySqlDataAdapter = new MySqlDataAdapter(stm, connection);
+                    DataSet DS = new DataSet();
+                    mySqlDataAdapter.Fill(DS);
+                    dataGridView1.DataSource = DS.Tables[0];
+                   
 
+                }
+                catch (MySqlException ex)
+                {
+                   
+
+                }
+                finally
+                {
+
+                    if (connection != null)
+                    {
+                        connection.Close();
+                    }
 
                 }
 

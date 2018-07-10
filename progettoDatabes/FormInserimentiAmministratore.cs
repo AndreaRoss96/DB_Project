@@ -284,21 +284,28 @@ namespace progettoDatabes
 
             using (var db = new DataModel.StudioprofessionaleDB())
             {
-                var queryResponsabilità =
+                /*var queryResponsabilità =
                     (from c in db.Clientes
                      from r in db.Responsabiles
                      where r.CodiceFiscale == c.CodiceFiscale
-                     && r.DataFine == null
+                     where (r.DataFine == null
                      || !(from r1 in db.Responsabiles
                           where r1.CodiceFiscale == c.CodiceFiscale
-                          select r1.CodiceFiscale).Contains(c.CodiceFiscale)
+                          select r1.CodiceFiscale).Contains(c.CodiceFiscale))
                      group c by new { c.CodiceFiscale, c.Nominativo } into g
                      select new
                      {
                          g.Key.CodiceFiscale,
                          g.Key.Nominativo
-                     });
-                     
+                     });*/
+                var queryResponsabilità =
+               (from c in db.Clientes
+                select new
+                {
+                    c.CodiceFiscale,
+                    c.Nominativo
+                });
+
 
                 foreach (var x in queryResponsabilità)
                 {
@@ -366,6 +373,8 @@ namespace progettoDatabes
                         newElem.Stipendio = Int32.Parse(textBoxTipo.Text);
                     }
                     db.Insert(newElem);
+                    MessageBox.Show("Operazione effettuata con successo");
+
                 }
                 catch (Exception ex)
                 {
@@ -396,6 +405,7 @@ namespace progettoDatabes
                     }
 
                     db.Insert(newElem);
+                    MessageBox.Show("Operazione effettuata con successo");
                 }
                 catch (Exception ex)
                 {
@@ -417,6 +427,7 @@ namespace progettoDatabes
                     newElem.CAP = textBoxCAP.Text;
 
                     db.Insert(newElem);
+                    MessageBox.Show("Operazione effettuata con successo");
                 }
                 catch (Exception ex)
                 {
@@ -436,6 +447,7 @@ namespace progettoDatabes
                     newElem.Descrizione = TextBoxDescrizione.Text;
 
                     db.Insert(newElem);
+                    MessageBox.Show("Operazione effettuata con successo");
                 }
                 catch (Exception ex)
                 {
@@ -459,6 +471,7 @@ namespace progettoDatabes
                     newElem.TipoPF = checkBoxPF.Checked;
 
                     db.Insert(newElem);
+                    MessageBox.Show("Operazione effettuata con successo");
                 }
                 catch (Exception ex)
                 {
@@ -477,7 +490,9 @@ namespace progettoDatabes
                     newElem.Nome = textBoxNome.Text;
 
                     db.Insert(newElem);
-                }catch(Exception ex)
+                    MessageBox.Show("Operazione effettuata con successo");
+                }
+                catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -498,6 +513,7 @@ namespace progettoDatabes
                         newElem.CodiceSede = Int32.Parse(s.Split('-')[0].ToString());
 
                         db.Insert(newElem);
+                        MessageBox.Show("Operazione effettuata con successo");
                     }
                 }catch(Exception ex)
                 {
@@ -529,6 +545,7 @@ namespace progettoDatabes
                         newElem.DataInizio = dateTimePickerResponsabilità.Value;
 
                         db.Insert(newElem);
+                        MessageBox.Show("Operazione effettuata con successo");
                     }
                 } catch(Exception ex)
                 {
