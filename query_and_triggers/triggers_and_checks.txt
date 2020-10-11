@@ -1,0 +1,97 @@
+per fase
+-TRIGGER_FASE_DURATA_INSERIMENTO(AFTER INSERT) =>aggiunge la differenza tra inizio e fine della fase aggiunta(nel campo durata di prestazione)
+BEGIN
+
+UPDATE prestazione SET durata=ADDTIME(durata,TIMEDIFF(NEW.fine,NEW.inizio)) WHERE codiceFiscale=NEW.codiceFiscale AND codicePrestazione=NEW.codicePrestazione AND codicePratica=NEW.codicePratica;
+
+
+END
+
+-TRIGGER_FASE_DURATA_AGGIORNAMENTO(AFTER UPDATE)=> poiche la fase,quindi i suoi campi inizio e data,è aggiornabile,bisogna modificare il valore di durata nella prestazione correlata.
+la prima query di update serve a sottrarre la differenza tra inizio e fine con i valori di prima della modifica,in modo da riportare durata ad uno stato "come se quel cambiamento non fosse mai successo", poi vengono sommati valori aggiornati
+
+BEGIN
+
+UPDATE prestazione SET durata=SUBTIME(durata,TIMEDIFF(OLD.fine,OLD.inizio)) WHERE codiceFiscale=OLD.codiceFiscale AND codicePrestazione=OLD.codicePrestazione AND codicePratica=OLD.codicePratica;
+
+UPDATE prestazione SET durata=ADDTIME(durata,TIMEDIFF(NEW.fine,NEW.inizio)) WHERE codiceFiscale=NEW.codiceFiscale AND codicePrestazione=NEW.codicePrestazione AND codicePratica=NEW.codicePratica;
+
+
+END
+
+-TRIGGER_FASE_SEDE(BEFORE INSERT) =>se la seguente condizione non viene rispettata la query non viene eseguita:la sede scelta dal cliente deve essere tra le sedi del dipendente che svolge la fase per quel dipendente
+
+BEGIN
+IF NOT EXISTS (SELECT * FROM cliente C WHERE C.codiceFiscale = new.codiceFiscale AND C.codiceSede IN (SELECT allocazione.codiceSede FROM allocazione WHERE allocazione.matricola = new.matricola)) THEN
+	SIGNAL SQLSTATE '45001';
+END IF;
+END
+
+
+es.
+insert into fase (codiceFiscale,codicePratica,codicePrestazione,matricola,inizio,fine,descrizione)
+VALUES('BNCGRG01S27I917O',2,6,2,'2011-12-18 13:17:17','2011-12-18 14:17:17','prova');
+questa insert
+non va come giusto che sia
+----------------------------------------
+per responsabile
+-TRIGGER_RESPONSABILE_SEDE(BEFORE INSERT)=> controlla che il nuovo responsabile sia un IMPIEGATO, e tra le sedi in cui lavora,ci sia anche quella in cui il cliente di serve
+BEGIN
+
+ IF NOT EXISTS (SELECT * FROM cliente C WHERE C.codiceFiscale = 		  new.codiceFiscale AND C.codiceSede IN (SELECT allocazione.codiceSede FROM allocazione,dipendente WHERE dipendente.matricola=allocazione.matricola AND dipendente.tipo='I' AND allocazione.matricola = new.matricola)) THEN
+        SIGNAL SQLSTATE '45001';
+    END IF;
+
+END
+
+es.
+insert into responsabile (codiceFiscale,matricola,dataInizio,dataFine)
+VALUES('BNCGRG01S27I917O',3,'2071-12-18','2011-12-18 14:17:17');
+neppure questa va come giusto che sia
+
+---------------------------------------------------------
+per prestazione
+TRIGGER_PRESTAZIONE_SOTTOCATEGORIA(BEFORE INSERT)=> 
+controlla che la tipologia del cliente sia compatibile con la tipologia della sottocategoria della prestazione richiesta
+
+BEGIN
+
+DECLARE TIPOCLIENTE CHAR;
+DECLARE TIPOAZ INT;
+DECLARE TIPOPF INT;
+
+SET TIPOCLIENTE = (SELECT cliente.tipo FROM cliente WHERE cliente.codiceFiscale=new.codiceFiscale);
+SET TIPOAZ = (SELECT sottocategoria.tipoAZ from sottocategoria where sottocategoria.codiceSottocategoria = new.codiceSottocategoria);
+SET TIPOPF = (SELECT sottocategoria.tipoPF from sottocategoria where sottocategoria.codiceSottocategoria = new.codiceSottocategoria);
+
+IF ((TIPOCLIENTE='A' AND TIPOAZ=0) OR (TIPOCLIENTE='P' AND TIPOPF=0)) THEN
+	SIGNAL SQLSTATE '45001'; 
+END IF;
+END
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+check aggiunti
+ALTER TABLE cliente ADD CONSTRAINT typeCheckCliente CHECK (tipo in ('P','A'));
+
+ALTER TABLE costo_struttura ADD CONSTRAINT typeCheckCostoStruttura CHECK (tipo in ('I','P','M'));
+ALTER TABLE costo_struttura ADD CONSTRAINT typeCostoCostoStruttura CHECK (costo >= 0);
+/***ALTER TABLE costo_struttura ADD CONSTRAINT checkQuantitaCostoStruttura CHECK (quantita >= 1); non usare***/
+ALTER TABLE costo_struttura ADD CONSTRAINT checkQuantitaCostoStruttura CHECK ((tipo IN ('M') AND quantita >=1 ) OR (tipo IN ('P','I') AND quantita IS NULL ));
+
+ALTER TABLE dipendente ADD CONSTRAINT checkCostoOrarioCliente CHECK (costoOrario >= 0);
+/***ALTER TABLE dipendente ADD CONSTRAINT checkStipendioDipendente CHECK (stipendio >= 1 non usare*///
+ALTER TABLE dipendente ADD CONSTRAINT checkStipendioDipendente CHECK ((tipo IN('I') AND stipendio >= 0) OR (tipo IN('C') AND stipendio IS NULL));
+ALTER TABLE dipendente ADD CONSTRAINT checkTipoDipendente CHECK (tipo in ('I','C'));
+
+ALTER TABLE fase ADD CONSTRAINT checkDataFineFase CHECK (inizio <= fine);
+
+ALTER TABLE prestazione ADD CONSTRAINT checkCompensoPrestazione CHECK (compenso >=0);
+
+ALTER TABLE responsabile ADD CONSTRAINT checkLegalitaDataFine CHECK (dataFine IS NULL OR dataInizio<=dataFine);
+
+ALTER TABLE sottocategoria ADD CONSTRAINT checkCostoFissoSottocategoria CHECK (costoFissoPerCliente >= 0);
+------------------------------------------------------------------
+
